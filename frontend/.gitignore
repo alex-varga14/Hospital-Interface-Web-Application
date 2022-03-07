@@ -1,6 +1,9 @@
 .DS_Store
 node_modules
 /dist
+/.bin/mime
+/.bin/semver
+/.bin/uuid
 
 
 # local env files
