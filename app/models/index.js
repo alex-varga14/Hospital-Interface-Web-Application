@@ -1,10 +1,9 @@
 const dbConfig = require("../config/db.config.js");
+const Sequelize = require("sequelize");
 
-//const Sequelize = require("sequelize");
-const  { Sequelize }  = require('@sequelize/core');
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
-  port: 8080,
+  port: 3306,
   dialect: dbConfig.dialect,
   operatorsAliases: 0,
   pool: {
@@ -17,5 +16,22 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.courses = require("./h.model.js")(sequelize, Sequelize);
+
+db.user = require("./user.model.js")(sequelize, Sequelize);
+db.role = require("./role.model.js")(sequelize, Sequelize);
+
+db.role.belongsToMany(db.user, {
+  through: "user_roles",
+  foreignKey: "roleId",
+  otherKey: "userId"
+});
+
+db.user.belongsToMany(db.role, {
+  through: "user_roles",
+  foreignKey: "userId",
+  otherKey: "roleId"
+})
+
+db.ROLES = ["patient", "doctor", "surgeon"];
+
 module.exports = db;

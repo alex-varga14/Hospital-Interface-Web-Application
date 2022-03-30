@@ -1,0 +1,4 @@
+node_modules
+/.bin/mime
+/.bin/semver
+/.bin/uuid
