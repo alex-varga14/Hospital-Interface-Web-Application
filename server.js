@@ -4,6 +4,9 @@
 const express = require("express");
 const cors = require("cors");
 
+//for cookies, stores the session data on the client with a cookie
+const cookieSession = require("cookie-session");
+
 // Create an Express app
 const app = express();
 // set Origin
@@ -18,6 +21,15 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  cookieSession({
+    name: "hospital-session",
+    // keys: ['key1', 'key2'], - sign and verify cookie values, Set cookies are always signed with keys[0]
+    secret: "COOKIE_SECRET", //should use as secret env var
+    httpOnly: true //indicate that the cookie is only to be sent over HTTP(s) and not made available to client JS
+  })
+);
+
 const db = require("./app/models");
 
 const Role = db.role
@@ -26,7 +38,7 @@ db.sequelize.sync();
 // drop the table if it already exists : 
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
-//   initial();
+//  // initial();
 // });
 
 // simple route for GET
