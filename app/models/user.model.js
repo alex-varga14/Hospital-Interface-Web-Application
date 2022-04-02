@@ -1,10 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("users", {
+    userID: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     username: {
       type: Sequelize.STRING
     },
-    email: {
-      type: Sequelize.STRING
+    dob: {
+      type: Sequelize.DATE
     },
     password: {
       type: Sequelize.STRING
@@ -13,31 +18,3 @@ module.exports = (sequelize, Sequelize) => {
   
   return User;
 };
-
-// module.exports = (sequelize, Sequelize) => {
-//     const User = sequelize.define("User", {
-//         UserID: {
-//           type: Sequelize.INTEGER,
-//           primaryKey: true,
-//           autoIncrement: true
-//         },
-//         Username: {
-//             type: Sequelize.STRING
-//         },
-//         Email: {
-//             type: Sequelize.STRING
-//         },
-//         Password: {
-//             type: Sequelize.STRING
-//         },
-//         DOB: {
-//             type: Sequelize.DATE
-//         }
-//       },
-//       {
-//         timestamps: false
-//       }
-//     );
-  
-//     return User;
-//   };
