@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Prescription = sequelize.define("prescriptions", {
+    const Prescription = sequelize.define("Prescriptions", {
       prescID: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -12,8 +12,25 @@ module.exports = (sequelize, Sequelize) => {
       },
       medications: {
         type: Sequelize.STRING
-      }
+      },
+      patientID : {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Patients',
+            key: 'userID'
+        }
+    }  
+    },
+    {
+        timestamps: false
     });
+
+    Prescription.associate = function(models){
+      Prescription.belongsTo(models.Patient, {foreignKey: {
+        name: 'patientID'
+       }
+      });
+    };
     
     return Prescription;
   };

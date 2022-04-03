@@ -1,20 +1,22 @@
 module.exports = (sequelize, Sequelize) => {
-    const Bill = sequelize.define("Bill", {
-      billID: {
+    const Doctor = sequelize.define("Doctor", {
+      userID: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
-      insurance: {
+      username: {
         type: Sequelize.STRING
       },
-      billDate: {
+      dob: {
         type: Sequelize.DATE
       },
-      bank: {
+      password: {
         type: Sequelize.STRING
       },
-      price: {
-          type: Sequelize.INTEGER
+      specialization: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       patientID : {
         type: Sequelize.INTEGER,
@@ -28,12 +30,12 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false
     });
 
-    Bill.associate = function(models){
-      Bill.belongsTo(models.Patient, {foreignKey: {
+    Doctor.associate = function(models){
+      Doctor.belongsTo(models.Patient, {foreignKey: {
         name: 'patientID'
        }
       });
     };
-    
-    return Bill;
+
+    return Doctor;
   };

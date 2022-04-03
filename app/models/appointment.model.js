@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Appointment = sequelize.define("appointments", {
+    const Appointment = sequelize.define("Appointment", {
       apptID: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -15,8 +15,25 @@ module.exports = (sequelize, Sequelize) => {
       },
       temperature: {
         type: Sequelize.INTEGER
-      }
+      },
+      patientID : {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Patients',
+            key: 'userID'
+        }
+    }
+    },
+    {
+        timestamps: false
     });
+
+    Appointment.associate = function(models){
+      Appointment.belongsTo(models.Patient, {foreignKey: {
+        name: 'patientID'
+       }
+      });
+    };
     
     return Appointment;
   };

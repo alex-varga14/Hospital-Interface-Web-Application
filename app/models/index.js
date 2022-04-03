@@ -17,9 +17,19 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require("../models/user.model.js")(sequelize, Sequelize);
-db.role = require("../models/role.model.js")(sequelize, Sequelize);
-
+db.patient = require("../models/patient.model.js")(sequelize, Sequelize);
+db.emergencycontact = require("../models/emergencyContact.model.js")(sequelize, Sequelize);
+db.doctor = require("../models/doctor.model.js")(sequelize, Sequelize);
+db.surgeon = require("../models/patient.model.js")(sequelize, Sequelize);
+//db.role = require("../models/role.model.js")(sequelize, Sequelize);
+db.appointment = require("../models/appointment.model.js")(sequelize, Sequelize);
+db.bill = require("../models/bill.model.js")(sequelize, Sequelize);
+db.disorder = require("../models/disorder.model.js")(sequelize, Sequelize);
+db.facility = require("../models/facility.model.js")(sequelize, Sequelize);
+db.operation = require("../models/operation.model.js")(sequelize, Sequelize);
+db.prescription = require("../models/prescription.model.js")(sequelize, Sequelize);
+db.vaccine = require("../models/vaccine.model.js")(sequelize, Sequelize);
+/*
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
@@ -30,8 +40,8 @@ db.user.belongsToMany(db.role, {
   through: "user_roles",
   foreignKey: "userId",
   otherKey: "roleId"
-})
+}) */
 
-db.ROLES = ["user", "admin", "moderator"];
+//db.ROLES = ["user", "patient", "doctor"];
 
 module.exports = db;

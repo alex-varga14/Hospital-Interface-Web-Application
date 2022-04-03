@@ -1,23 +1,27 @@
 module.exports = (sequelize, Sequelize) => {
-    const Operation = sequelize.define("Operation", {
-      operationNum: {
+    const Surgeon = sequelize.define("Surgeon", {
+      userID: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      operationType: {
+      username: {
         type: Sequelize.STRING
       },
-      time: {
+      dob: {
         type: Sequelize.DATE
       },
-      complete: {
-        type: Sequelize.BOOLEAN
+      password: {
+        type: Sequelize.STRING
+      },
+      surgeonType: {
+        type: Sequelize.STRING,
+        allowNull: true
       }
     },
     {
         timestamps: false
     });
-    
-    return Operation;
+  
+    return Surgeon;
   };
