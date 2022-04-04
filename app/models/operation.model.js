@@ -14,10 +14,25 @@ module.exports = (sequelize, Sequelize) => {
       complete: {
         type: Sequelize.BOOLEAN
       }
+      // ,
+      // surgeonID: {
+      //     type: Sequelize.INTEGER,
+      //     references: {
+      //         model: 'Surgeons',
+      //         key: 'userID'
+      //     }
+      // }
     },
     {
         timestamps: false
     });
+
+    // Operation.associate = function(models){
+    //   Operation.belongsTo(models.surgeon, {foreignKey: {
+    //     name: 'surgeonID'
+    //    }
+    //   });
+    // };
     
     return Operation;
   };
