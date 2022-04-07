@@ -3,7 +3,7 @@
 <div id="newPatient" class="submit-form whole-page">
   <!-- <div v-if="!submitted"> -->
     <div class="title-big text-center">
-      New Patient Form
+      Add New Patient
     </div>
 <!--       COURSE TITLE       -->
       <div class="form-group title-container">
@@ -18,10 +18,11 @@
           placeholder="John Smith"
         />
       </div>
-    <div id="inline3">
+
+    <div class="inline3">
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
-          <label for="faculty">Patient Emergency Contact</label>
+          <label for="faculty">Emergency Contact</label>
           <input
             type="text"
             onkeydown="return /[a-z ]+$/i.test(event.key)"
@@ -59,8 +60,9 @@
             maxlength="3"
             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
         </div>
-      </div>
-      <div id="inline3">
+      </div>  <!--end div inline3-->
+
+      <div class ="inline3">
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
           <label for="faculty">Patient Height</label>
@@ -85,7 +87,6 @@
             required
             name="coursecode"
             placeholder="120kg"
-            maxlength="4"
           />
         </div>
 <!--        COURSE NUMBER          -->
@@ -97,21 +98,8 @@
             id="courseno"
             required
             name="courseno"
-            placeholder="O"
-            maxlength="3"
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+            placeholder="O"/>
         </div>
-      </div>
-<!--      COURSE DESCRIPTION          -->
-      <div class="form-group desc-container">
-        <label for="description">Patient Summary</label>
-        <textarea
-          class="form-control"
-          id="description"
-          required
-          name="description"
-          rows="5">
-        </textarea>
       </div>
 <!--           SUBMIT BUTTON          -->
       <!-- <button @click="saveCourse" class="btn btn-success submit-btn text-center">Send Prescription</button> -->
@@ -219,10 +207,9 @@ input::-webkit-inner-spin-button {
   margin-right: -140px;
   margin-bottom: 30px;
 }
-#inline3{
+.inline3{
   width:100%;
   height:auto;
-  background-color:white;
   display:flex;
   margin-bottom: 15px;
 }
