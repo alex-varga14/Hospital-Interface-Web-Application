@@ -7,7 +7,7 @@
     </div>
 <!--       COURSE TITLE       -->
       <div class="form-group title-container">
-        <label for="title">Patient Name</label>
+        <label for="title" class = "labels">Patient Name</label>
         <input
           type="text"
           onkeydown="return /[a-z ]/i.test(event.key)"
@@ -22,7 +22,7 @@
     <div class="inline3">
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
-          <label for="faculty">Emergency Contact</label>
+          <label for="faculty" class = "labels">Emergency Contact</label>
           <input
             type="text"
             onkeydown="return /[a-z ]+$/i.test(event.key)"
@@ -35,7 +35,7 @@
         </div>
 <!--        COURSE CODE         -->
         <div class="form-group coursecode-container">
-          <label for="coursecode">Disorder Info</label>
+          <label for="coursecode" class = "labels">Disorder Info</label>
           <input
             type="text"
             onkeydown=" return /[a-z]/i.test(event.key)"
@@ -44,28 +44,25 @@
             required
             name="coursecode"
             placeholder="Brain Disesase"
-            maxlength="4"
           />
         </div>
 <!--        COURSE NUMBER          -->
         <div class="form-group courseno-container">
-          <label for="courseno">Vaccine Info</label>
+          <label for="courseno" class = "labels">Vaccine Info</label>
           <input
             type="text"
             class="form-control"
             id="courseno"
             required
             name="courseno"
-            placeholder="SARS, HEPATITIS"
-            maxlength="3"
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+            placeholder="SARS, HEPATITIS"/>
         </div>
       </div>  <!--end div inline3-->
 
       <div class ="inline3">
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
-          <label for="faculty">Patient Height</label>
+          <label for="faculty" class = "labels">Patient Height</label>
           <input
             type="text"
             onkeydown="return /[a-z ]+$/i.test(event.key)"
@@ -78,7 +75,7 @@
         </div>
 <!--        COURSE CODE         -->
         <div class="form-group coursecode-container">
-          <label for="coursecode">Patient Weight</label>
+          <label for="coursecode" class = "labels">Patient Weight</label>
           <input
             type="text"
             onkeydown=" return /[a-z]/i.test(event.key)"
@@ -91,7 +88,7 @@
         </div>
 <!--        COURSE NUMBER          -->
         <div class="form-group courseno-container">
-          <label for="courseno">Patient BloodType</label>
+          <label for="courseno" class = "labels">Patient BloodType</label>
           <input
             type="text"
             class="form-control"
@@ -252,5 +249,10 @@ input::-webkit-inner-spin-button {
 .submit-form {
   max-width: 300px;
   margin: auto;
+}
+
+.labels {
+  color: #FFA384;
+  font-weight: bold;
 }
 </style>
