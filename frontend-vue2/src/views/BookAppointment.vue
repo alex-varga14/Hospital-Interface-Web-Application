@@ -4,9 +4,10 @@
     <div class="title-big text-center">
       Book Appointment
     </div>
-<!--       COURSE TITLE       -->
+
+
       <div class="form-group title-container">
-        <label for="title">Filler</label>
+        <label for="title" class="labels">Patient Name</label>
         <input
           type="text"
           onkeydown="return /[a-z ]/i.test(event.key)"
@@ -14,54 +15,32 @@
           id="title"
           required
           name="title"
-          placeholder="Filler"
+          placeholder="Enter patient name here"
         />
       </div>
-    <div id="inline3">
-<!--         FACULTY         -->
-        <div class="form-group faculty-container">
-          <label for="faculty">Filler</label>
-          <input
-            type="text"
-            onkeydown="return /[a-z ]+$/i.test(event.key)"
-            class="form-control"
-            id="faculty"
-            required
-            name="faculty"
-            placeholder="Filler"
-          />
-        </div>
-<!--        COURSE CODE         -->
-        <div class="form-group coursecode-container">
-          <label for="coursecode">Filler</label>
-          <input
-            type="text"
-            onkeydown=" return /[a-z]/i.test(event.key)"
-            class="form-control"
-            id="coursecode"
-            required
-            name="coursecode"
-            placeholder="Filler"
-            maxlength="4"
-          />
-        </div>
-<!--        COURSE NUMBER          -->
-        <div class="form-group courseno-container">
-          <label for="courseno">Filler</label>
-          <input
-            type="text"
-            class="form-control"
-            id="courseno"
-            required
-            name="courseno"
-            placeholder="Filler"
-            maxlength="3"
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-        </div>
+
+      <div class="form-group title-container">
+        <label for="title" class="labels">Doctor Name</label>
+        <input
+          type="text"
+          onkeydown="return /[a-z ]/i.test(event.key)"
+          class="form-control"
+          id="title"
+          required
+          name="title"
+          placeholder="Enter doctor name here"
+        />
       </div>
+
+    <div class = "form-group title-container">
+        <label for="title" class="labels">Enter desired appointment date</label>
+        <Datepicker></Datepicker>
+    </div>
+
+    
 <!--      COURSE DESCRIPTION          -->
       <div class="form-group desc-container">
-        <label for="description">Summary</label>
+        <label for="description" class="labels">Reason for Visit</label>
         <textarea
           class="form-control"
           id="description"
@@ -93,8 +72,15 @@
 
 <script>
 //import CourseDataService from "../services/CourseDataService";
+//import DatePick from 'vue-date-pick'
+import Datepicker from 'vuejs-datepicker';
+
 export default {
-  name: "bookAppointment"
+  name: "bookAppointment",
+
+  components: {
+    Datepicker
+  }
 //   data() {
 //     console.log("SAVING COURSE...");
 //     return {
@@ -221,5 +207,10 @@ input::-webkit-inner-spin-button {
 .submit-form {
   max-width: 300px;
   margin: auto;
+}
+
+.labels {
+  color: #FFA384;
+  font-weight: bold;
 }
 </style>

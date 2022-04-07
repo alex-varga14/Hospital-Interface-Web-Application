@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-custom navbar-dark">
       <a href class="navbar-brand" @click.prevent>HealthIsWealth</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -55,6 +55,8 @@
 
 <script>
 import EventBus from "./common/EventBus";
+
+
 export default {
   computed: {
     currentUser() {
@@ -89,6 +91,16 @@ export default {
   }
 };
 </script>
+
+<style>
+  body{
+    background-color: #E7F2F8 !important;
+  }
+  .navbar-custom{
+    background-color: #74BDCB;
+  }
+  
+</style>
 
 <!-- <template>
   <div id="app">
