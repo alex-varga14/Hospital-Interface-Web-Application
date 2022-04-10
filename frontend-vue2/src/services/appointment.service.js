@@ -2,7 +2,7 @@ import api from './api';
 
 class AppointmentService {
   create(data) {
-    return api.post("/appointments", data);
+    return api.post("http://localhost:8080/api/appointments", data);
   }
 
   update(id, data) {
@@ -22,6 +22,11 @@ class AppointmentService {
   }
 }
 export default new AppointmentService();
+
+
+
+
+
 
 // import axios from 'axios';
 // const API_URL = 'http://localhost:8080/api/test/';

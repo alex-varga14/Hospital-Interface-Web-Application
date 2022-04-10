@@ -57,7 +57,7 @@ exports.findAppointmentByPK = (req, res) => {
 exports.update = (req, res) => {
   const apptId = req.params.apptId;
 
-  Course.update(req.body, {
+  Appointment.update(req.body, {
     where: { apptID: apptId }
   })
     .then(num => {
@@ -104,7 +104,7 @@ exports.delete = (req, res) => {
 };
 
 
-// Get all Ratings of a specific course
+// Get appointment by PatientID
 exports.findAppointmentbyPatientID = (req, res) => {
     const patientID = req.params.patientID;
 

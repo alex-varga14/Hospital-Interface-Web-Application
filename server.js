@@ -1,4 +1,4 @@
-//iimport necessary modules
+//import necessary modules
 // Express; building REST api
 // cors provides Express midware to enable options
 const express = require("express");
@@ -51,6 +51,8 @@ require("./app/routes/auth.routes")(app)
 require("./app/routes/user.routes")(app)
 require("./app/routes/patient.routes")(app)
 require("./app/routes/appointment.routes")(app)
+require("./app/routes/prescription.routes")(app)
+
 
 
 // set port, listen for requests

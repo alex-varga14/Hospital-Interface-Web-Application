@@ -1,153 +1,147 @@
 <template>
-  <!-- <div id="writePresc" class="submit-form whole-page"> -->
 <div id="writePresc" class="submit-form whole-page">
-  <!-- <div v-if="!submitted"> -->
+  <div v-if="!submitted">
     <div class="title-big text-center">
       New Prescription
     </div>
 <!--       COURSE TITLE       -->
       <div class="form-group title-container">
-        <label for="title">Patient ID</label>
+        <label for="pID">Patient ID</label>
         <input
           type="text"
           onkeydown="return /[a-z ]/i.test(event.key)"
           class="form-control"
-          id="title"
+          id="pID"
           required
-          name="title"
+          name="pID"
           placeholder="123"
         />
       </div>
     <div id="inline3">
 <!--         FACULTY         -->
         <div class="form-group faculty-container">
-          <label for="faculty">PrescID</label>
+          <label for="prescID">PrescID</label>
           <input
             type="text"
-            onkeydown="return /[a-z ]+$/i.test(event.key)"
             class="form-control"
-            id="faculty"
+            id="prescID"
             required
-            name="faculty"
+            v-model="prescription.prescID"
+            name="prescID"
             placeholder="87622"
           />
         </div>
 <!--        COURSE CODE         -->
         <div class="form-group coursecode-container">
-          <label for="coursecode">Medication Type</label>
+          <label for="medications">Medication Type</label>
           <input
             type="text"
             onkeydown=" return /[a-z]/i.test(event.key)"
             class="form-control"
-            id="coursecode"
+            id="medications"
             required
-            name="coursecode"
+            v-model="prescription.medications"
+            name="medications"
             placeholder="Xanax"
-            maxlength="4"
           />
         </div>
 <!--        COURSE NUMBER          -->
         <div class="form-group courseno-container">
-          <label for="courseno">Doctor Signature</label>
+          <label for="sig">Doctor Signature</label>
           <input
             type="text"
             class="form-control"
-            id="courseno"
+            id="sig"
             required
-            name="courseno"
+            name="sig"
             placeholder="James Smith"
-            maxlength="3"
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+           />
         </div>
       </div>
 <!--      COURSE DESCRIPTION          -->
       <div class="form-group desc-container">
-        <label for="description">Instructions</label>
+        <label for="instructions">Instructions</label>
         <textarea
           class="form-control"
-          id="description"
+          id="instructions"
           required
-          name="description"
+          v-model="prescription.instructions"
+          name="instructions"
           rows="5">
         </textarea>
       </div>
 <!--           SUBMIT BUTTON          -->
-      <!-- <button @click="saveCourse" class="btn btn-success submit-btn text-center">Send Prescription</button> -->
-       <button  class="btn btn-success submit-btn text-center">Send Prescription</button>
+       <button @click="savePrescription" class="btn btn-success submit-btn text-center">Send Prescription</button>
 <!--            MESSAGE               -->
-      <!-- <div class="message">
-        <p class="text-center"> Requested Appointment Will be Reviewed by Doctor.</p>
-      </div> -->
-    <!-- </div> -->
+      <div class="message">
+        <p class="text-center">Prescppp</p>
+      </div>
+    </div>
 <!--            SUBMITTED            -->
-    <!-- <div v-else>
-      <h4 class ="title-big text-center">Course Submitted!</h4>
+    <div v-else>
+      <h4 class ="title-big text-center">Prescription Submitted!</h4>
       <div class ="message">
-        <p class="text-center"> Your suggested course will be reviewed by a Course Critic administrator. 
-                                Only selected courses will be added to Course Critic. Selections will be made
-                                based on the number of suggestions for a course. 
+        <p class="text-center"> PPPPPPP 
         </p>
       </div>
-      <button class="btn btn-success submit-btn text-center" @click="newCourse">Suggest Another Course</button>
-    </div> -->
+      <button class="btn btn-success submit-btn text-center" @click="newPrescription">Write Another Prescription</button>
+    </div>
   </div>
 </template>
 
 <script>
-//import CourseDataService from "../services/CourseDataService";
+import PrescriptionDataService from "../services/prescription.service";
+
 export default {
   name: "writePresc",
-//   data() {
-//     console.log("SAVING COURSE...");
-//     return {
-//       course: {
-//         id: null,
-//         Title: "",
-//         Description: "",
-//         Faculty: "",
-//         CourseNo: null,
-//         CourseCode: "",
-//         Suggested: null,
-//       },
-//       submitted: false
-//     };
-//   },
-//   methods: {
-//     newCourse() {
-//       this.submitted = false;
-//       this.course = {};
-//     },
-//     saveCourse() {
-//       console.log("SAVING COURSE...");
-//       var data = {
-        
-//         Title: this.course.title,
-//         Description: this.course.description,
-//         Faculty: this.course.faculty,
-//         CourseNo: this.course.courseno,
-//         CourseCode: this.course.coursecode,
-//         Suggested: true
-//       };
-      
-//       if (this.course.title == undefined || this.course.faculty == undefined || this.course.coursecode == undefined 
-//         || this.course.courseno == undefined || this.course.description == undefined) {
-//         alert("All fields must be filled out to suggest a new course");
-//         this.newCourse();
-//       }
-//       else{
-//         CourseDataService.create(data)
-//         .then(response => {
-//           this.course.id = response.data.id;
-//           this.course = response.data;
-//           console.log(response.data);
-//           this.submitted = true;
-//         })
-//         .catch(e => {
-//           console.log(e);
-//         });
-//       }
-//     },
-//   }
+  data() {
+    //console.log("SAVING COURSE...");
+    return {
+      prescription: {
+        prescID: null,
+        instructions: "",
+        refilDate: "",
+        medications: "",
+        patientID: null
+      },
+      submitted: false
+    };
+  },
+  methods: {
+    newPrescription() {
+      this.submitted = false;
+      this.prescription = {};
+    },
+    savePrescription() {
+      console.log("SAVING Prescription...");
+      var data = {
+        prescID: 123,
+        instructions: this.prescription.instructions,
+        refilDate: "07-07-2022",
+        medications: this.prescription.medications,
+        patientID: 1
+      };
+      console.log("SAVING Prescription1...");
+      if ( this.prescription.instructions == undefined || this.prescription.medications == undefined ) {
+        alert("All fields must be filled out to write a new prescription.");
+        this.newPrescription();
+      }
+      else
+      {
+        console.log("SAVING Prescription2...");
+        PrescriptionDataService.create(data)
+        .then(response => {
+          //this.course.id = response.data.id;
+          this.prescription = response.data;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      }
+    },
+  }
 };
 </script>
 

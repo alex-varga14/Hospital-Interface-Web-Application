@@ -9,11 +9,13 @@ const User = db.user;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
+
   if (!token) {
     return res.status(403).send({
       message: "No token provided!"
     });
   }
+
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
@@ -24,6 +26,7 @@ verifyToken = (req, res, next) => {
     next();
   });
 };
+
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
@@ -40,6 +43,7 @@ isAdmin = (req, res, next) => {
   });
 });
 };
+
 isModerator = (req, res, next) => {
 User.findByPk(req.userId).then(user => {
   user.getRoles().then(roles => {
@@ -55,6 +59,7 @@ User.findByPk(req.userId).then(user => {
   });
 });
 };
+
 isModeratorOrAdmin = (req, res, next) => {
 User.findByPk(req.userId).then(user => {
   user.getRoles().then(roles => {
@@ -74,6 +79,7 @@ User.findByPk(req.userId).then(user => {
   });
 });
 };
+
 const authJwt = {
 verifyToken: verifyToken,
 isAdmin: isAdmin,

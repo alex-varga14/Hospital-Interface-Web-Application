@@ -1,3 +1,3 @@
-module.export = {
-    secret: "cpsc-secret-key"
+module.exports = {
+    secret: "cpsckey"
 };
