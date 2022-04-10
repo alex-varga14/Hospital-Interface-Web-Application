@@ -32,11 +32,11 @@ app.use(
 
 const db = require("./app/models");
 
-//db.sequelize.sync();
+db.sequelize.sync();
 // drop the table if it already exists : 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 // simple route for GET
 app.get("/", (req, res) => {
@@ -47,8 +47,11 @@ app.get("/", (req, res) => {
 //   res.sendFile(path + "index.html");
 // });
 
-//require("./app/routes/auth.routes")(app)
-//require("./app/routes/user.routes")(app)
+require("./app/routes/auth.routes")(app)
+require("./app/routes/user.routes")(app)
+require("./app/routes/patient.routes")(app)
+require("./app/routes/appointment.routes")(app)
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

@@ -35,6 +35,7 @@ module.exports = (sequelize, Sequelize) => {
     );
   
     Patient.associate = function(models) {
+      /*
       Patient.hasOne(models.EmergencyContact, {foreignKey: {
         name: 'PatientID',
         allowNull: false
@@ -62,14 +63,14 @@ module.exports = (sequelize, Sequelize) => {
       },
       onDelete: 'cascade'
       });
-  
+      */
       Patient.hasMany(models.appointment, {foreignKey: {
         name: 'patientID',
         allowNull: true
       },
       onDelete: 'cascade'
       });
-  
+      /*
       Patient.hasMany(models.prescription, {foreignKey: {
         name: 'patientID',
         allowNull: true
@@ -83,6 +84,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       onDelete: 'cascade'
       });
+      */
   
     };
     return Patient;

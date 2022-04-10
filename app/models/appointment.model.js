@@ -2,7 +2,8 @@ module.exports = (sequelize, Sequelize) => {
     const Appointment = sequelize.define("Appointment", {
       apptID: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       summary: {
         type: Sequelize.STRING

@@ -1,10 +1,9 @@
 <template>
   <div id="bookAppointment" class="submit-form whole-page">
-  <!-- <div v-if="!submitted"> -->
+  <div v-if="!submitted">
     <div class="title-big text-center">
       Book Appointment
     </div>
-
 
       <div class="form-group title-container">
         <label for="title" class="labels">Patient Name</label>
@@ -34,7 +33,9 @@
 
     <div class = "form-group title-container">
         <label for="title" class="labels">Enter desired appointment date</label>
-        <Datepicker></Datepicker>
+        <Datepicker
+        v-model="appointment.apptDate"
+        ></Datepicker>
     </div>
 
     
@@ -45,93 +46,88 @@
           class="form-control"
           id="description"
           required
+          v-model="appointment.summary"
           name="description"
           rows="5">
         </textarea>
       </div>
 <!--           SUBMIT BUTTON          -->
-      <button class="btn btn-success submit-btn text-center">Request Appointment</button>
+      <button @click="saveAppointment" class="btn btn-success submit-btn text-center">Request Appointment</button>
 <!--            MESSAGE               -->
       <div class="message">
         <p class="text-center"> Requested Appointment Will be Reviewed by Doctor.</p>
       </div>
-    <!-- </div> -->
+    </div>
 <!--            SUBMITTED            -->
-    <!-- <div v-else>
-      <h4 class ="title-big text-center">Course Submitted!</h4>
+    <div v-else>
+      <h4 class ="title-big text-center">Appointment Request Submitted!</h4>
       <div class ="message">
-        <p class="text-center"> Your suggested course will be reviewed by a Course Critic administrator. 
-                                Only selected courses will be added to Course Critic. Selections will be made
-                                based on the number of suggestions for a course. 
+        <p class="text-center"> Your request will be reviewed by your Doctor.
         </p>
       </div>
-      <button class="btn btn-success submit-btn text-center" @click="newCourse">Suggest Another Course</button>
-    </div> -->
+      <button class="btn btn-success submit-btn text-center" @click="newAppointment">Book Another Appointment</button>
+    </div>
   </div>
 </template>
 
 <script>
-//import CourseDataService from "../services/CourseDataService";
-//import DatePick from 'vue-date-pick'
+import AppointmentDataService from "../services/appointment.service";
 import Datepicker from 'vuejs-datepicker';
 
 export default {
   name: "bookAppointment",
-
   components: {
     Datepicker
-  }
-//   data() {
-//     console.log("SAVING COURSE...");
-//     return {
-//       course: {
-//         id: null,
-//         Title: "",
-//         Description: "",
-//         Faculty: "",
-//         CourseNo: null,
-//         CourseCode: "",
-//         Suggested: null,
-//       },
-//       submitted: false
-//     };
-//   },
-//   methods: {
-//     newCourse() {
-//       this.submitted = false;
-//       this.course = {};
-//     },
-//     saveCourse() {
-//       console.log("SAVING COURSE...");
-//       var data = {
-        
-//         Title: this.course.title,
-//         Description: this.course.description,
-//         Faculty: this.course.faculty,
-//         CourseNo: this.course.courseno,
-//         CourseCode: this.course.coursecode,
-//         Suggested: true
-//       };
+  },
+  data() {
+    console.log("SAVING COURSE...");
+    return {
+      appointment: {
+        id: null,
+        summary: "",
+        apptDate: "",
+        bloodPressure: null,
+        temperature: null,
+        patientID: null
+      },
+      submitted: false
+    };
+  },
+  methods: {
+    newAppointment() {
+      this.submitted = false;
+      this.appointment = {};
+    },
+    saveAppointment() {
+      console.log("SAVING Appointment...");
+      var data = {
+        summary: this.appointment.summary,
+        apptDate: this.appointment.apptDate,
+        bloodPressure: 80,
+        temperature: 37,
+        patientID: 1
+        // ,
+        // Suggested: true
+      };
       
-//       if (this.course.title == undefined || this.course.faculty == undefined || this.course.coursecode == undefined 
-//         || this.course.courseno == undefined || this.course.description == undefined) {
-//         alert("All fields must be filled out to suggest a new course");
-//         this.newCourse();
-//       }
-//       else{
-//         CourseDataService.create(data)
-//         .then(response => {
-//           this.course.id = response.data.id;
-//           this.course = response.data;
-//           console.log(response.data);
-//           this.submitted = true;
-//         })
-//         .catch(e => {
-//           console.log(e);
-//         });
-//       }
-//     },
-//   }
+      if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {
+        alert("All fields must be filled out to book an appointment");
+        this.newAppointment();
+      }
+      else{
+        AppointmentDataService.create(data)
+        .then(response => {
+          //this.appointment.id = response.data.id;
+          this.appointment = response.data;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      }
+    },
+  }
 };
 </script>
 
