@@ -4,19 +4,19 @@ module.exports = app => {
 
     // Create a new Bill
     router.post("/bills", bills.create);
-    /*
-    // Retrieve a single Appointment with apptId
-    router.get("/bills/:apptId", appointments.findAppointmentByPK);
     
-    //Retrieve Appointments by PatientID
-    router.get("/appointments/patientID/:patientID", appointments.findAppointmentbyPatientID);
+    // Retrieve a single Bill with billID
+    router.get("/bills/:billID", bills.findBillByPK);
+    
+    //Retrieve bills by PatientID
+    router.get("/bills/patientID/:patientID", bills.findBillbyPatientID);
 
-    // Update a Appointment with apptID
-    router.put("/appointments/:apptId", appointments.update);
+    // Update a bills with billID
+    router.put("/bills/:billID", bills.update);
   
-    // Delete a Appointments with id
-    router.delete("/appointments/:apptId", appointments.delete);
-    */
+    // Delete a bills with id
+    router.delete("/bills/:billID", bills.delete);
+    
     // Set base route for the endpoints
     app.use('/api', router);
 };

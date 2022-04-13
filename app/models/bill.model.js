@@ -2,7 +2,8 @@ module.exports = (sequelize, Sequelize) => {
     const Bill = sequelize.define("Bill", {
       billID: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       insurance: {
         type: Sequelize.STRING
