@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.INTEGER,
           primaryKey: true
       },
-        vaccineName: {
+      vaccineName: {
         type: Sequelize.STRING
       },
       disease: {
