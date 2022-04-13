@@ -27,54 +27,54 @@ verifyToken = (req, res, next) => {
   });
 };
 
-isAdmin = (req, res, next) => {
+isPatient = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "admin") {
+        if (roles[i].name === "patient") {
           next();
           return;
         }
     }
     res.status(403).send({
-      message: "Require Admin Role!"
+      message: "Require Patient Role!"
     });
     return;
   });
 });
 };
 
-isModerator = (req, res, next) => {
+isDoctor = (req, res, next) => {
 User.findByPk(req.userId).then(user => {
   user.getRoles().then(roles => {
     for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "moderator") {
+      if (roles[i].name === "doctor") {
         next();
         return;
       }
     }
     res.status(403).send({
-      message: "Require Moderator Role!"
+      message: "Require Doctor Role!"
     });
   });
 });
 };
 
-isModeratorOrAdmin = (req, res, next) => {
+isDoctorOrPatient = (req, res, next) => {
 User.findByPk(req.userId).then(user => {
   user.getRoles().then(roles => {
     for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "moderator") {
+      if (roles[i].name === "doctor") {
         next();
         return;
       }
-      if (roles[i].name === "admin") {
+      if (roles[i].name === "patient") {
         next();
         return;
       }
     }
     res.status(403).send({
-      message: "Require Moderator or Admin Role!"
+      message: "Require Doctor or Patient Role!"
     });
   });
 });
@@ -82,8 +82,8 @@ User.findByPk(req.userId).then(user => {
 
 const authJwt = {
 verifyToken: verifyToken,
-isAdmin: isAdmin,
-isModerator: isModerator,
-isModeratorOrAdmin: isModeratorOrAdmin
+isPatient: isPatient,
+isDoctor: isDoctor,
+isDoctorOrPatient: isDoctorOrPatient
 };
 module.exports = authJwt;

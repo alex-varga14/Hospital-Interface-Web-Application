@@ -19,14 +19,14 @@ module.exports = function(app) {
   );
 
   app.get(
-    "/api/test/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
+    "/api/test/doctor",
+    [authJwt.verifyToken, authJwt.isDoctor],
+    controller.doctorBoard
   );
 
   app.get(
-    "/api/test/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
+    "/api/test/patient",
+    [authJwt.verifyToken, authJwt.isPatient],
+    controller.patientBoard
   );
 };

@@ -52,8 +52,12 @@ require("./app/routes/user.routes")(app)
 require("./app/routes/patient.routes")(app)
 require("./app/routes/appointment.routes")(app)
 require("./app/routes/prescription.routes")(app)
-
-
+require("./app/routes/bill.routes")(app)
+require("./app/routes/disorder.routes")(app)
+require("./app/routes/facility.routes")(app)
+require("./app/routes/emergencyContact.routes")(app)
+require("./app/routes/operation.routes")(app)
+require("./app/routes/vaccine.routes")(app)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

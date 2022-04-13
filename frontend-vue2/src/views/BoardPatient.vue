@@ -11,14 +11,14 @@ import UserService from '../services/user.service';
 import EventBus from "../common/EventBus";
 
 export default {
-  name: 'Admin',
+  name: 'Patient',
   data() {
     return {
       content: ''
     };
   },
   mounted() {
-    UserService.getAdminBoard().then(
+    UserService.getPatientBoard().then(
       response => {
         this.content = response.data;
       },
