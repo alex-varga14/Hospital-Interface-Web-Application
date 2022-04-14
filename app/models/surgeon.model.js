@@ -23,14 +23,14 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false
     });
 
-    // Surgeon.associate = function(models) {
-    //   Surgeon.hasMany(models.Operation, {foreignKey: {
-    //     name: 'surgeonID',
-    //     allowNull: true
-    //   },
-    //   onDelete: 'cascade'
-    //   });
-    // };
+    Surgeon.associate = function(models) {
+      Surgeon.hasMany(models.Operation, {foreignKey: {
+        name: 'surgeonID',
+        allowNull: true
+      },
+      onDelete: 'cascade'
+      });
+    };
   
     return Surgeon;
   };

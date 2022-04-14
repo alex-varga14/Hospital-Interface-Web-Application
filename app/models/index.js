@@ -30,6 +30,7 @@ db.facility = require("../models/facility.model.js")(sequelize, Sequelize);
 db.operation = require("../models/operation.model.js")(sequelize, Sequelize);
 db.prescription = require("../models/prescription.model.js")(sequelize, Sequelize);
 db.vaccine = require("../models/vaccine.model.js")(sequelize, Sequelize);
+db.surgeon = require("../models/surgeon.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",

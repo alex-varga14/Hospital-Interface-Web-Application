@@ -34,3 +34,12 @@ VALUES('8772', 'Take twice daily', '2022-05-14', 'Puffer', '123');
 
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
 VALUES('10', 'docman', '1972-01-10', 'docman123', 'Respiratory', '123');
+
+INSERT INTO surgeons(userID, username, dob, password, surgeonType)
+VALUES('11', 'surman', '1973-01-10', 'surman123', 'Head');
+
+INSERT INTO facilities(facilityName, facilityType, cityName, countryName)
+VALUES('John Hopkins', 'Hospital', 'Baltimore', 'United States');
+
+INSERT INTO operations(operationNum, operationType, time, complete)
+VALUES('2314', 'Head', '2022-04-16', '0');
