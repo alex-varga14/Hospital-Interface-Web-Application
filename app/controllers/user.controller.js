@@ -7,12 +7,15 @@
  exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");
   };
-  exports.userBoard = (req, res) => {
+exports.userBoard = (req, res) => {
     res.status(200).send("User Content.");
   };
-  exports.patientBoard = (req, res) => {
+exports.patientBoard = (req, res) => {
     res.status(200).send("Patient Content.");
   };
-  exports.doctorBoard = (req, res) => {
+exports.doctorBoard = (req, res) => {
     res.status(200).send("Doctor Content.");
+  };
+exports.surgeonBoard = (req, res) => {
+    res.status(200).send("Surgeon Content.");
   };

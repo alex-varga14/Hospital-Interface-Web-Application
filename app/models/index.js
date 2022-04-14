@@ -43,6 +43,6 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-db.ROLES = ["user", "patient", "doctor"];
+db.ROLES = ["user", "patient", "doctor", "surgeon"];
 
 module.exports = db;

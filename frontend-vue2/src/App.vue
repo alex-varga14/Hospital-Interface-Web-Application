@@ -14,6 +14,9 @@
         <li v-if="showDoctorBoard" class="nav-item">
           <router-link to="/doctor" class="nav-link">Doctor Board</router-link>
         </li>
+        <li v-if="showSurgeonBoard" class="nav-item">
+          <router-link to="/surgeon" class="nav-link">Surgeon Board</router-link>
+        </li>
         <li class="nav-item">
           <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
         </li>
@@ -70,6 +73,12 @@ export default {
     showDoctorBoard() {
       if (this.currentUser && this.currentUser.roles) {
         return this.currentUser.roles.includes('ROLE_DOCTOR');
+      }
+      return false;
+    },
+    showSurgeonBoard() {
+      if (this.currentUser && this.currentUser.roles) {
+        return this.currentUser.roles.includes('ROLE_SURGEON');
       }
       return false;
     }

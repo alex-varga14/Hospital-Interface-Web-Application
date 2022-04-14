@@ -14,6 +14,9 @@ class UserService {
   getPatientBoard() {
     return axios.get(API_URL + 'patient', { headers: authHeader() });
   }
+  getSurgeonBoard() {
+    return axios.get(API_URL + 'surgeon', { headers: authHeader() });
+  }
 }
 export default new UserService();
 /*import api from './api';

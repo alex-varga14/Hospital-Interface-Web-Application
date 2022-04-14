@@ -60,6 +60,23 @@ User.findByPk(req.userId).then(user => {
 });
 };
 
+isSurgeon = (req, res, next) => {
+  User.findByPk(req.userId).then(user => {
+    user.getRoles().then(roles => {
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i].name === "surgeon") {
+          next();
+          return;
+        }
+    }
+    res.status(403).send({
+      message: "Require Surgeon Role!"
+    });
+    return;
+  });
+});
+};
+
 isDoctorOrPatient = (req, res, next) => {
 User.findByPk(req.userId).then(user => {
   user.getRoles().then(roles => {
@@ -80,10 +97,32 @@ User.findByPk(req.userId).then(user => {
 });
 };
 
+isSurgeonOrDoctor = (req, res, next) => {
+  User.findByPk(req.userId).then(user => {
+    user.getRoles().then(roles => {
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i].name === "surgeon") {
+          next();
+          return;
+        }
+        if (roles[i].name === "doctor") {
+          next();
+          return;
+        }
+      }
+      res.status(403).send({
+        message: "Require Surgeon or Doctor Role!"
+      });
+    });
+  });
+  };
+
 const authJwt = {
 verifyToken: verifyToken,
 isPatient: isPatient,
 isDoctor: isDoctor,
-isDoctorOrPatient: isDoctorOrPatient
+isSurgeon: isSurgeon,
+isDoctorOrPatient: isDoctorOrPatient,
+isSurgeonOrDoctor: isSurgeonOrDoctor
 };
 module.exports = authJwt;

@@ -85,6 +85,12 @@ export const router = new Router({
       component: () => import('./views/BoardDoctor.vue')
     },
     {
+      path: '/surgeon',
+      name: 'surgeon',
+      // lazy-loaded
+      component: () => import('./views/BoardSurgeon.vue')
+    },
+    {
       path: '/user',
       name: 'user',
       // lazy-loaded
@@ -92,16 +98,3 @@ export const router = new Router({
     }
   ]
 });
-
-// router.beforeEach((to, from, next) => {
-//     const publicPages = ['/login', '/register', '/home'];
-//     const authRequired = !publicPages.includes(to.path);
-//     const loggedIn = localStorage.getItem('user');
-//     // trying to access a restricted page + not logged in
-//     // redirect to login page
-//     if (authRequired && !loggedIn) {
-//       next('/login');
-//     } else {
-//       next();
-//     }
-//   });
