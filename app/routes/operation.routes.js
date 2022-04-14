@@ -17,6 +17,9 @@ module.exports = app => {
     // Delete a Operation with operationNum
     router.delete("/operations/:operationNum", operations.delete);
 
+    //Get all operations
+    router.get("/operations", operations.findAllOperations);
+
     // Set base route for the endpoints
     app.use('/api', router);
   };

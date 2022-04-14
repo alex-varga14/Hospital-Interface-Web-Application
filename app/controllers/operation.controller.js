@@ -101,6 +101,23 @@ exports.delete = (req, res) => {
     });
 };
 
+// Retrieve all Operations from the database.
+exports.findAllOperations = (req, res) => {
+  const operationType = req.query.operationType;
+  var condition = operationType ? { operationType: { [Op.like]: `%${operationType}%` } } : null;
+
+  Operation.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving operations."
+      });
+    });
+};
+
 /*
 // Get operation by SurgeonID
 exports.findOperationbySurgeonID = (req, res) => {
