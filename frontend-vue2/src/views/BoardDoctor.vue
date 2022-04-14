@@ -1,8 +1,37 @@
 <template>
-  <div class="container">
-    <header class="jumbotron">
-      <h3>{{content}}</h3>
-    </header>
+  <div id="doctor">
+   <div class="container">
+      <header class="jumbotron">
+       <h3>{{content}}</h3>
+      </header>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <router-link to="patient-data">
+            <button type="button" class="btn btn-primary btn-block mb-4">View All Patients Data</button>
+          </router-link>
+        </div>
+        <div class="col">
+          <router-link to="facility-data">
+            <button type="button" class="btn btn-primary btn-block mb-4">View Facilities Data</button>
+          </router-link>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <router-link to="appointments">
+           <button type="button" class="btn btn-primary btn-block mb-4">View Requested Appointments</button>
+          </router-link>
+        </div>
+        <div class="col">
+          <router-link to="new-prescription">
+            <button type="button" class="btn btn-primary btn-block mb-4">Write Prescription</button>
+          </router-link>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </template>
 

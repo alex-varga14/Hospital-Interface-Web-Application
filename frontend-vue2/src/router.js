@@ -34,19 +34,19 @@ export const router = new Router({
       component: Register
     },
     {
-      path: '/bookAppointment',
+      path: '/book-appointment',
       component: BookAppointment
     },
     {
-      path: '/patientData',
+      path: '/patient-data',
       component: PatientData
     },
     {
-      path: '/facilityData',
+      path: '/facility-data',
       component: FacilityData
     },
     { 
-      path: '/newPrescription',
+      path: '/new-prescription',
       component: WritePrescription
     },
     { 
