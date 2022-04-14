@@ -38,22 +38,22 @@ exports.create = (req, res) => {
       });
     });
 };
-/*
-// Search Appointment by Primary Key
-exports.findAppointmentByPK = (req, res) => {
-  const apptId = req.params.apptId;
 
-  Appointment.findByPk(apptId)
+// Search Patient by Primary Key
+exports.findPatientByPK = (req, res) => {
+  const userId = req.params.userID;
+
+  Patient.findByPk(userId)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Appointment with apptId=" + apptId
+        message: "Error retrieving Patient with userID=" + userId
       });
     });
 };
-
+/*
 // Update a Appointment by the apptID in the request
 exports.update = (req, res) => {
   const apptId = req.params.apptId;
@@ -261,12 +261,12 @@ exports.findCoursebyCodeandNo = (req, res) => {
     });
   });
 };
-
-// Get all Courses, as well as average Ratings and # of Reviews
-exports.getCourseAndAggregates = (req, res) => {
+*/
+// Get all Patients, as well as connected information
+exports.getAllPatients = (req, res) => {
   
   sequelize.query(
-    'SELECT Courses.ID, Courses.Title, Courses.Description, Courses.Faculty, Courses.CourseCode, Courses.CourseNo, AVG(Ratings.Enjoyment) as Enjoyment, AVG(Ratings.Difficulty) as Difficulty, AVG(Ratings.Workload) as Workload, COUNT(DISTINCT(Reviews.ID)) as NumReviews FROM Courses LEFT OUTER JOIN Ratings ON Ratings.CourseID = Courses.ID LEFT OUTER JOIN Reviews ON Reviews.CourseID = Courses.ID WHERE Suggested = false GROUP BY Courses.ID;', {
+    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
       type: sequelize.QueryTypes.SELECT
     }
   )
@@ -276,11 +276,11 @@ exports.getCourseAndAggregates = (req, res) => {
   .catch(err => {
     res.status(500).send({
       message:
-        err.message || "Some error occured while retrieving courses with aggregates."
+        err.message || "Some error occured while retrieving patients with aggregates."
     });
   });
 };
-
+/*
 // Set Suggested to False
 exports.setSuggestedFalse = (req, res) => {
   const courseID = req.params.id;

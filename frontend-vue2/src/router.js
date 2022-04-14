@@ -5,6 +5,7 @@ import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import BookAppointment from './views/BookAppointment.vue';
 import PatientData from './views/PatientData.vue';
+import PatientInfo from './views/PatientInfo.vue';
 import FacilityData from './views/FacilityData.vue';
 import WritePrescription from './views/WritePrescription.vue';
 import Appointments from './views/Appointments.vue';
@@ -40,6 +41,11 @@ export const router = new Router({
     {
       path: '/patient-data',
       component: PatientData
+    },
+    {
+      path: '/patient-information/:id',
+      name: 'patient-information',
+      component: PatientInfo
     },
     {
       path: '/facility-data',
