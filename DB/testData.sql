@@ -26,8 +26,11 @@ VALUES('1242', 'Hepatitis B', 'Hepatitis', '123');
 INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
 VALUES('9782', 'Johnston Group', '2022-04-14', 'Toronto Dominion', '234', '123');
 
-INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID)
-VALUES('762', 'Exercise more', '2022-04-14', '80', '37', '123');
+INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
+VALUES('762', 'Exercise more', '2022-04-14', '80', '37', '123', '1');
+
+INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
+VALUES('761', 'Drink less', '2022-03-14', '80', '36', '123', '0');
 
 INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patientID)
 VALUES('8772', 'Take twice daily', '2022-05-14', 'Puffer', '123');

@@ -88,7 +88,8 @@ export default {
         apptDate: "",
         bloodPressure: null,
         temperature: null,
-        patientID: null
+        patientID: null,
+        requested: null
       },
       submitted: false
     };
@@ -105,9 +106,8 @@ export default {
         apptDate: this.appointment.apptDate,
         bloodPressure: 80,
         temperature: 37,
-        patientID: 1
-        // ,
-        // Suggested: true
+        patientID: 1,
+        requested: true
       };
       
       if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {

@@ -2,24 +2,38 @@
 <div id="writePresc" class="submit-form whole-page">
   <div v-if="!submitted">
     <div class="title-big text-center">
-      New Prescription
+        Prescribe Medication
     </div>
-<!--       COURSE TITLE       -->
-      <div class="form-group title-container">
+    <div class="row">
+<!--       Patient ID       -->
+      <div class="col form-group patientID-container">
         <label for="pID">Patient ID</label>
         <input
           type="text"
-          onkeydown="return /[a-z ]/i.test(event.key)"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
           class="form-control"
           id="pID"
           required
+          v-model="prescription.patientID"
           name="pID"
           placeholder="123"
         />
       </div>
-    <div id="inline3">
-<!--         FACULTY         -->
-        <div class="form-group faculty-container">
+      <div class="col form-label refildate-container">
+        <label for="refilDate">Refil Date</label>
+        <input
+          type="Date"
+          class="form-control"
+          id="refilDate"
+          required
+          v-model="prescription.refilDate"
+          name="refilDate"
+        />
+      </div>
+    </div>
+    <div class="row">
+<!--         Prescription ID         -->
+        <div class="col form-group prescID-container">
           <label for="prescID">PrescID</label>
           <input
             type="text"
@@ -31,8 +45,8 @@
             placeholder="87622"
           />
         </div>
-<!--        COURSE CODE         -->
-        <div class="form-group coursecode-container">
+<!--        Medications         -->
+        <div class="col form-group medications-container">
           <label for="medications">Medication Type</label>
           <input
             type="text"
@@ -45,8 +59,8 @@
             placeholder="Xanax"
           />
         </div>
-<!--        COURSE NUMBER          -->
-        <div class="form-group courseno-container">
+<!--        Doctor Signature          -->
+        <div class="col form-group sig-container">
           <label for="sig">Doctor Signature</label>
           <input
             type="text"
@@ -59,7 +73,7 @@
         </div>
       </div>
 <!--      COURSE DESCRIPTION          -->
-      <div class="form-group desc-container">
+      <div class="form-group instructions-container">
         <label for="instructions">Instructions</label>
         <textarea
           class="form-control"
@@ -72,18 +86,10 @@
       </div>
 <!--           SUBMIT BUTTON          -->
        <button @click="savePrescription" class="btn btn-success submit-btn text-center">Send Prescription</button>
-<!--            MESSAGE               -->
-      <div class="message">
-        <p class="text-center">Prescppp</p>
-      </div>
     </div>
 <!--            SUBMITTED            -->
     <div v-else>
       <h4 class ="title-big text-center">Prescription Submitted!</h4>
-      <div class ="message">
-        <p class="text-center"> PPPPPPP 
-        </p>
-      </div>
       <button class="btn btn-success submit-btn text-center" @click="newPrescription">Write Another Prescription</button>
     </div>
   </div>
@@ -113,15 +119,13 @@ export default {
       this.prescription = {};
     },
     savePrescription() {
-      console.log("SAVING Prescription...");
       var data = {
-        prescID: 123,
+        prescID: this.prescription.prescID,
         instructions: this.prescription.instructions,
-        refilDate: "07-07-2022",
+        refilDate: this.prescription.refilDate,
         medications: this.prescription.medications,
-        patientID: 1
+        patientID: this.prescription.patientID
       };
-      console.log("SAVING Prescription1...");
       if ( this.prescription.instructions == undefined || this.prescription.medications == undefined ) {
         alert("All fields must be filled out to write a new prescription.");
         this.newPrescription();
@@ -151,12 +155,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .whole-page { 
   font-weight: 50;
   color: black;
 }
+
 .title-big {
-  font-weight: 300;
+  font-weight: bold;
   font-size: 40px;
   line-height: 60px;
   color: #000000;
@@ -166,54 +172,45 @@ input::-webkit-inner-spin-button {
   margin-top: 30px;
   margin-left: -50px;
 }
-.title-container {
-  margin-left: -130px;
-  margin-right: -140px;
-  margin-bottom: 30px;
-}
-#inline3{
-  width:100%;
-  height:auto;
-  background-color:white;
-  display:flex;
-  margin-bottom: 15px;
-}
-.faculty-container {
+
+.patientID-container {
   margin-left: -130px;
   margin-right: 10px;
 }
-.coursecode-container {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.courseno-container {
+
+.refildate-container {
   margin-left: 20px;
   margin-right: -140px;
 }
-.desc-container {
+
+.prescID-container {
+  margin-left: -130px;
+  margin-right: 10px;
+}
+
+.medications-container {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sig-container {
+  margin-left: 20px;
+  margin-right: -140px;
+}
+
+.instructions-container {
   margin-top: 30px;
   margin-bottom: 40px;
   margin-left: -130px;
   margin-right: -140px;
 }
+
 .submit-btn {
   width: 130%;
   margin-left: -40px;
   margin-right: 20px;
 }
-.message{
-  font-size: 12px;
-  color: grey;
-  padding-top: 25px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: -130px;
-  margin-right: -140px;
-  border: 1px dotted grey;
-}
+
 .submit-form {
   max-width: 300px;
   margin: auto;

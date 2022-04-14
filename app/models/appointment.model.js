@@ -23,7 +23,10 @@ module.exports = (sequelize, Sequelize) => {
             model: 'Patients',
             key: 'userID'
         }
-    }
+      },
+      requested: {
+        type: Sequelize.BOOLEAN
+      }
     },
     {
         timestamps: false
