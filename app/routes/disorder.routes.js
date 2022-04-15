@@ -16,6 +16,9 @@ module.exports = app => {
 
     // Delete a Disorders with id
     router.delete("/disorders/:disorderName", disorders.delete);
+
+    //get All disorders and aggregate data
+    router.get("/disorders", disorders.findAllDisorders)
     
     // Set base route for the endpoints
     app.use('/api', router);

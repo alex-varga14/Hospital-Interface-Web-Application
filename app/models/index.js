@@ -22,7 +22,6 @@ db.patient = require("../models/patient.model.js")(sequelize, Sequelize);
 db.surgeon = require("../models/surgeon.model.js")(sequelize, Sequelize);
 db.emergencycontact = require("../models/emergencyContact.model.js")(sequelize, Sequelize);
 db.doctor = require("../models/doctor.model.js")(sequelize, Sequelize);
-db.surgeon = require("../models/patient.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.appointment = require("../models/appointment.model.js")(sequelize, Sequelize);
 db.bill = require("../models/bill.model.js")(sequelize, Sequelize);

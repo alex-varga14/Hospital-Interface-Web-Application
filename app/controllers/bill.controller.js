@@ -121,4 +121,19 @@ exports.findBillbyPatientID = (req, res) => {
             err.message || "Some error occurred while retrieving Bill by PatientID."
         });
     });
-}; 
+};
+
+// Retrieve all Bills from the database.
+exports.findAllBills = (req, res) => {
+    
+  Bill.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Bills."
+      });
+    });
+};

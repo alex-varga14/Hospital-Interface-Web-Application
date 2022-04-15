@@ -16,6 +16,9 @@ module.exports = app => {
   
     // Delete a bills with id
     router.delete("/bills/:billID", bills.delete);
+
+     //get All bills and aggregate data
+     router.get("/bills", bills.findAllBills)
     
     // Set base route for the endpoints
     app.use('/api', router);

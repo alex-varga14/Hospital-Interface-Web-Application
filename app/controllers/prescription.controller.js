@@ -124,3 +124,18 @@ exports.findPrescriptionbyPatientID = (req, res) => {
         });
     });
 }; 
+
+// Retrieve all Prescriptions from the database.
+exports.findAllPrescriptions = (req, res) => {
+    
+  Prescription.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Prescriptions."
+      });
+    });
+}; 

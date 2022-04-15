@@ -16,6 +16,9 @@ module.exports = app => {
   
     // Delete a Prescription with prescID
     router.delete("/prescriptions/:prescID", prescriptions.delete);
+
+    //get All prescriptions and aggregate data
+    router.get("/prescriptions", prescriptions.findAllPrescriptions)
  
     // Set base route for the endpoints
     app.use('/api', router);

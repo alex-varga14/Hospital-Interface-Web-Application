@@ -14,7 +14,7 @@ module.exports = app => {
     // Delete a surgeons with id
     router.delete("/surgeons/:userId", surgeons.delete);
 
-    //get All doctors and aggregate data
+    //get All surgeons and aggregate data
     router.get("/surgeons", surgeons.findAllSurgeons)
 
     // Set base route for the endpoints

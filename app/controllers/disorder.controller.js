@@ -120,3 +120,18 @@ exports.findDisorderbyPatientID = (req, res) => {
         });
     });
 }; 
+
+// Retrieve all Disorders from the database.
+exports.findAllDisorders = (req, res) => {
+    
+  Disorder.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Disorders."
+      });
+    });
+}; 

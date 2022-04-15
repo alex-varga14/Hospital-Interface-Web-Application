@@ -122,3 +122,18 @@ exports.findVaccinebyPatientID = (req, res) => {
         });
     });
 };
+
+// Retrieve all Vaccines from the database.
+exports.findAllVaccines = (req, res) => {
+    
+  Vaccine.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Vaccines."
+      });
+    });
+}; 

@@ -17,6 +17,9 @@ module.exports = app => {
     // Delete a Vaccine with patientID
     router.delete("/vaccines/:patientID", vaccines.delete);
 
+    //get All vaccines and aggregate data
+    router.get("/vaccines", vaccines.findAllVaccines)
+
     // Set base route for the endpoints
     app.use('/api', router);
   };

@@ -54,7 +54,8 @@ exports.findSurgeonByPK = (req, res) => {
 
 // Retrieve all Surgeons from the database.
 exports.findAllSurgeons = (req, res) => {
-  
+    
+  console.log("surgeons");
     Surgeon.findAll()
     .then(data => {
       res.send(data);
