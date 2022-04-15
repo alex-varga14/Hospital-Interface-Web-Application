@@ -13,6 +13,10 @@ class AppointmentService {
     return api.delete("http://localhost:8080/api/appointments/" + id);
   }
 
+  approveAppointment(id) {
+    return api.put("http://localhost:8080/api/appointments/requested/" + id, false);
+  }
+
   getById(id) {
     return api.get("http://localhost:8080/api/appointments/" + id);
   }
@@ -20,6 +24,11 @@ class AppointmentService {
   getByPatientID(id) {
     return api.get("http://localhost:8080/api/appointments/patientID/:" + id);
   }
+
+  getRequestedAppointments() {
+    return api.get("http://localhost:8080/api/appointments/requested/1");
+  }
+
 }
 export default new AppointmentService();
 

@@ -101,7 +101,6 @@ import PrescriptionDataService from "../services/prescription.service";
 export default {
   name: "writePresc",
   data() {
-    //console.log("SAVING COURSE...");
     return {
       prescription: {
         prescID: null,

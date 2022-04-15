@@ -2,15 +2,13 @@
   <div id="patient">
    <div class="container">
       <header class="jumbotron">
-       <h3>{{content}}</h3>
+       <h3>{{content}} | {{currentUser.id}}</h3>
       </header>
     </div>
     <div class="container">
       <div class="row">
         <div class="col">
-          <router-link to="patient-data">
-            <button type="button" class="btn btn-primary btn-block mb-4">View My Information</button>
-          </router-link>
+            <button @click="pushInfo(currentUser.id)" type="button" class="btn btn-primary btn-block mb-4">View My Information</button>
         </div>
         <div class="col">
           <router-link to="patient-bills">
@@ -41,10 +39,23 @@ import EventBus from "../common/EventBus";
 
 export default {
   name: 'Patient',
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  },
   data() {
     return {
       content: ''
     };
+  },
+  methods: {
+    pushInfo(data){
+      console.log("DATA:"  + data);
+      this.$router.push({name: "patient-information",
+        params: { id:data }
+      });
+    },
   },
   mounted() {
     UserService.getPatientBoard().then(

@@ -22,7 +22,8 @@ exports.create = (req, res) => {
     apptDate: req.body.apptDate,
     bloodPressure: req.body.bloodPressure,
     temperature: req.body.temperature,
-    patientID: req.body.patientID
+    patientID: req.body.patientID,
+    requested: req.body.requested
   };
 
   // Save Appointment in the database
@@ -124,6 +125,48 @@ exports.findAppointmentbyPatientID = (req, res) => {
     });
 };
 
+// Get Appointsments by requested
+exports.findRequestedAppointments = (req, res) => {
+  const request = req.params.req;
+
+  Appointment.findAll({
+    where: {
+      requested: request
+    }
+  })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while retrieving requested appointments."
+    });
+  });
+};
+
+// Approve requested appointment 
+exports.setAppointmentFalse = (req, res) => {
+  const apptID = req.params.id;
+  console.log("In false");
+  sequelize.query(
+    'UPDATE Appointments SET Requested = False WHERE apptID = ' + apptID + ';', {
+      type: sequelize.QueryTypes.UPDATE
+    }
+  )
+  .then(num => {
+    res.send({
+      message: "Appointment was updated successfully."
+    })
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Error updating Appointment with apptID = " + apptID
+    });
+  });
+
+};
+
 /*
 // Retrieve all Courses from the database.
 exports.findAllCourses = (req, res) => {
@@ -177,26 +220,6 @@ exports.findCoursebyFaculty = (req, res) => {
     res.status(500).send({
       message:
         err.message || "Some error occurred while retrieving courses by faculty."
-    });
-  });
-};
-
-// Get Course by Suggested
-exports.findSuggestedCourses = (req, res) => {
-  const sug = req.params.sug;
-
-  Course.findAll({
-    where: {
-      suggested: sug
-    }
-  })
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occured while retrieving suggested courses."
     });
   });
 };
@@ -281,25 +304,4 @@ exports.getCourseAndAggregates = (req, res) => {
     });
   });
 };
-
-// Set Suggested to False
-exports.setSuggestedFalse = (req, res) => {
-  const courseID = req.params.id;
-
-  sequelize.query(
-    'UPDATE Courses SET Suggested = False WHERE ID = ' + courseID + ';', {
-      type: sequelize.QueryTypes.UPDATE
-    }
-  )
-  .then(num => {
-    res.send({
-      message: "Course was updated successfully."
-    })
-  })
-  .catch(err => {
-    res.status(500).send({
-      message: "Error updating Course with id = " + id
-    });
-  });
-
-}; */
+ */

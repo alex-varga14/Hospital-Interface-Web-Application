@@ -10,35 +10,35 @@
       </div>
     </div>
     <div class="container">
-      <!-- <table class="table" id="formtable">
+      <table class="table" id="formtable">
       <thead>
         <tr id="header">
-          <th scope="col">Course Code</th>
-          <th scope="col">Course Number</th>
-          <th scope="col">Title</th>
-          <th scope="col">Faculty</th>
-          <th scope="col">Description</th>
+          <th scope="col">ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Summary</th>
+          <!-- <th scope="col">Faculty</th>
+          <th scope="col">Description</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr v-for="aggregatecourses in aggregatecourses" v-bind:key="aggregatecourses" id="rows">
-          <td id="code">{{aggregatecourses.CourseCode}}</td>
-          <td>{{aggregatecourses.CourseNo}}</td>
-          <td>{{aggregatecourses.Title}}</td>
-          <td>{{aggregatecourses.Faculty}}</td>
-          <td>{{aggregatecourses.Description}}</td>
+        <tr v-for="appointments in appointments" v-bind:key="appointments" id="rows">
+          <td id="code">{{appointments.apptID}}</td>
+          <td>{{appointments.apptDate}}</td>
+          <td>{{appointments.summary}}</td>
+          <!-- <td>{{aggregatecourses.Faculty}}</td>
+          <td>{{aggregatecourses.Description}}</td> -->
           <td>
-              <button @click="approve(aggregatecourses.ID)"  type="submit" class="btn approve-course">
+              <button @click="approve(appointments.apptID)"  type="submit" class="btn approve-course">
                   Approve
               </button>
-              <button @click="deny(aggregatecourses.ID)"  type="submit" class=" btn deny-course">
+              <button @click="deny(appointments.apptID)"  type="submit" class=" btn deny-course">
                   Deny
               </button>
           </td>
         </tr>
   
       </tbody>
-    </table> -->
+    </table>
     </div>
   </div>
 </template>
@@ -51,32 +51,35 @@ name: "doctorApproveAppointment",
 data() {
   return {
       appointments: [],
+      componentKey: 0
     };
   },
   methods: {
   approve(id){
-        window.alert("Course Review Approved!");
-        AppointmentDataService.approveSuggested(id)
-          .then( response => {
-            if(response){
-              this.retrieveCourses()
-              this.retrieveSuggestedCourses();
-              this.$delete(this.aggregatecourses, id);
-            }
-            
-          })
-          .catch( e => {
-             console.log(e);
-          });        
+    window.alert("Appointment Approved!");
+    AppointmentDataService.approveAppointment(id)
+      .then( response => {
+        if(response){
+          console.log("Pain");
+          //this.retrieveCourses()
+          this.retrieveRequestedAppointments();
+          this.$delete(this.appointments, id);
+        }
+        
+      })
+      .catch( e => {
+          console.log(e);
+          console.log("Pain In catch");
+      });        
     },
    deny(id){
-      window.alert("Course Review Denied!");
-      CourseDataService.delete(id)
+      window.alert("Appointment Denied!");
+      AppointmentDataService.delete(id)
           .then( response => {
             if(response){
-              this.retrieveCourses();
-              this.retrieveSuggestedCourses();
-              this.$delete(this.aggregatecourses, id);
+              //this.retrieveCourses();
+              this.retrieveRequestedAppointments();
+              this.$delete(this.appointments, id);
             }
           })
           .catch( e => {
@@ -86,20 +89,20 @@ data() {
       // this.refresh();
       // this.$forceUpdate();
     },
-    retrieveCourses() {
-      CourseDataService.getAll()
-        .then(response => {
-          this.courses = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-    retrieveSuggestedCourses(){
-      CourseDataService.getSuggested()
+    // retrieveCourses() {
+    //   CourseDataService.getAll()
+    //     .then(response => {
+    //       this.courses = response.data;
+    //       console.log(response.data);
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+    retrieveRequestedAppointments(){
+      AppointmentDataService.getRequestedAppointments()
       .then(response => {
-        this.aggregatecourses= response.data;
+        this.appointments= response.data;
         console.log(response.data);
       })
       .catch(e => {
@@ -112,8 +115,8 @@ data() {
   },
   
   mounted() {
-    this.retrieveCourses();
-    this.retrieveSuggestedCourses();
+    //this.retrieveCourses();
+    this.retrieveRequestedAppointments();
   }
 };
 </script>

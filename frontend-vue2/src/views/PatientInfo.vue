@@ -29,6 +29,7 @@ export default {
       PatientDataService.getById(id)
         .then(response => {
           this.currentPatient = response.data;
+          console.log("Patient:" + this.currentPatient.username);
           this.data = id;
           console.log(response.data);
         })

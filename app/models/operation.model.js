@@ -27,7 +27,7 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     Operation.associate = function(models){
-      Operation.belongsTo(models.surgeon, {foreignKey: {
+      Operation.belongsTo(models.Surgeon, {foreignKey: {
         name: 'surgeonID'
        }
       });

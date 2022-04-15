@@ -17,6 +17,10 @@ module.exports = app => {
     // Delete a Patient with id
     router.delete("/patients/:apptId", patients.delete);
 */
+
+    // //get All patient and aggregate data
+    // router.get("/patients", patients.getAllPatients)
+    
     //get All patient and aggregate data
     router.get("/patients", patients.getAllPatients)
 

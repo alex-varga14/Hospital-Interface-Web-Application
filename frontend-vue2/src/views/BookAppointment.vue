@@ -142,7 +142,7 @@ input::-webkit-inner-spin-button {
   color: black;
 }
 .title-big {
-  font-weight: 300;
+  font-weight: bold;
   font-size: 40px;
   line-height: 60px;
   color: #000000;

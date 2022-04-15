@@ -8,7 +8,7 @@ const Op = db.Sequelize.Op;
 // Create and Schedule a new Operation
 exports.create = (req, res) => {
   // Validate request
-  if(!req.body.operationType)
+  if(!req.body.operationNum)
   {
     res.status(400).send({
       message: "Content can not be empty!"
@@ -18,9 +18,11 @@ exports.create = (req, res) => {
 
   // Book an Operation
   const operation = {
-    operationType: req.body.summary,
-    time: req.body.apptDate,
-    complete: req.body.complete
+    operationNum: req.body.operationNum,
+    operationType: req.body.operationType,
+    time: req.body.time,
+    complete: req.body.complete,
+    surgeonID: req.body.surgeonID
   };
 
   // Save Operation in the database
@@ -104,13 +106,15 @@ exports.delete = (req, res) => {
 // Retrieve all Operations from the database.
 exports.findAllOperations = (req, res) => {
   const operationType = req.query.operationType;
-  var condition = operationType ? { operationType: { [Op.like]: `%${operationType}%` } } : null;
-
-  Operation.findAll({ where: condition })
+  console.log("Trying");
+  //var condition = operationType ? { operationType: { [Op.like]: `%${operationType}%` } } : null;
+  //Operation.findAll({ where: condition })
+  Operation.findAll()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
+      console.log("Failed");
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving operations."

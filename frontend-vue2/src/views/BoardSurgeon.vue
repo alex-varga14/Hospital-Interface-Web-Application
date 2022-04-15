@@ -9,11 +9,8 @@
       <div class="row">
         <div class="col">
           <router-link to="schedule-operation">
-            <button @click="viewOperations" type="button" class="btn btn-primary btn-block mb-4">View Operations</button>
+            <button @click="viewOperations" type="button" class="btn btn-primary btn-block mb-4">Book Operation</button>
           </router-link>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-primary btn-block mb-4">Book Operation</button>
         </div>
       </div>
     </div>
@@ -31,7 +28,7 @@
           <tr v-for="operations in operations" v-bind:key="operations" id="rows">
             <td id="code">{{operations.operationNum}}</td>
             <td>{{operations.operationType}}</td>
-            <td>{{operations.time}}</td>
+            <td>{{new Date(operations.time).toISOString().slice(0, 10)}}</td>
             <td>{{operations.complete}}</td>
             
             <!-- <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
@@ -66,7 +63,7 @@ export default {
     retrieveOperations(){
       OperationService.getAllOperations()
       .then(response => {
-        this.operations= response.data;
+        this.operations = response.data;
         console.log(response.data);
       })
       .catch(e => {

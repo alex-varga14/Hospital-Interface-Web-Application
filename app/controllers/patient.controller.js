@@ -54,6 +54,42 @@ exports.findPatientByPK = (req, res) => {
     });
 };
 /*
+// Retrieve all Patients from the database.
+exports.findAllPatients = (req, res) => {
+  const username = req.query.username;
+  var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+
+  Patient.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving patients."
+      });
+    });
+}; */
+
+// Get all Patients, as well as connected information
+exports.getAllPatients = (req, res) => {
+  
+  sequelize.query(
+    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
+      type: sequelize.QueryTypes.SELECT
+    }
+  )
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occured while retrieving patients with aggregates."
+    });
+  });
+};
+/*
 // Update a Appointment by the apptID in the request
 exports.update = (req, res) => {
   const apptId = req.params.apptId;
@@ -122,22 +158,6 @@ exports.findAppointmentbyPatientID = (req, res) => {
             message:
             err.message || "Some error occurred while retrieving Appointment by PatientID."
         });
-    });
-};
-// Retrieve all Courses from the database.
-exports.findAllCourses = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-
-  Course.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving courses."
-      });
     });
 };
 */
@@ -261,26 +281,6 @@ exports.findCoursebyCodeandNo = (req, res) => {
     });
   });
 };
-*/
-// Get all Patients, as well as connected information
-exports.getAllPatients = (req, res) => {
-  
-  sequelize.query(
-    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
-      type: sequelize.QueryTypes.SELECT
-    }
-  )
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occured while retrieving patients with aggregates."
-    });
-  });
-};
-/*
 // Set Suggested to False
 exports.setSuggestedFalse = (req, res) => {
   const courseID = req.params.id;

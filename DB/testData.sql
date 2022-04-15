@@ -6,16 +6,16 @@ INSERT INTO roles VALUES(3, 'patient');
 INSERT INTO roles VALUES(4, 'surgeon');
 
 INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
-VALUES('123', 'johnSmith', '1967-01-10', 'dog123', '165', '172', 'O');
+VALUES('1', 'johnSmith', '1967-01-10', 'dog123', '165', '172', 'O');
 
 INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
-VALUES('124', 'jimSmith', '1965-01-10', 'dog12', '185', '190', 'A');
+VALUES('2', 'jimSmith', '1965-01-10', 'dog12', '185', '190', 'A');
 
 INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
-VALUES('125', 'janeSmith', '1977-01-10', 'dog1', '135', '152', 'AB');
+VALUES('3', 'janeSmith', '1977-01-10', 'dog1', '135', '152', 'AB');
 
 INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
-VALUES('126', 'johnDoe', '2001-12-11', 'password123', '180', '163', 'B');
+VALUES('4', 'johnDoe', '2001-12-11', 'password123', '180', '163', 'B');
 
 INSERT INTO EmergencyContacts(name, relationship, phoneNumber, patientID)
 VALUES('Barney Smith', 'Father', '403-666-6666', '123');
@@ -117,28 +117,28 @@ INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patient
 VALUES('8775', 'Fast for eight hours before taking', '2022-06-19', 'Remdesivir', '126');
 
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
-VALUES('10', 'docman', '1972-01-10', 'docman123', 'Respiratory', '123');
+VALUES('5', 'docman', '1972-01-10', 'docman123', 'Respiratory', '123');
 
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
-VALUES('11', 'doctorpepper', '1954-01-11', 'softdrink123', 'Cardiology', '124');
+VALUES('6', 'doctorpepper', '1954-01-11', 'softdrink123', 'Cardiology', '124');
 
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
-VALUES('12', 'johnsmith', '1957-03-18', 'gramms2123', 'Ophthalmology', '125');
+VALUES('7', 'johnsmith', '1957-03-18', 'gramms2123', 'Ophthalmology', '125');
 
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
-VALUES('13', 'joejoe', '1990-02-13', 'joe546', 'Respiratory', '126');
+VALUES('8', 'joejoe', '1990-02-13', 'joe546', 'Respiratory', '126');
 
 INSERT INTO surgeons(userID, username, dob, password, surgeonType)
-VALUES('14', 'drstrange', '1971-05-10', 'strange1971', 'Heart');
+VALUES('9', 'drstrange', '1971-05-10', 'strange1971', 'Heart');
 
 INSERT INTO surgeons(userID, username, dob, password, surgeonType)
-VALUES('15', 'surman', '1973-01-10', 'surman123', 'Head');
+VALUES('10', 'surman', '1973-01-10', 'surman123', 'Head');
 
 INSERT INTO surgeons(userID, username, dob, password, surgeonType)
-VALUES('16', 'absmith', '1959-08-11', 'absmithnephro', 'Kidney');
+VALUES('11', 'absmith', '1959-08-11', 'absmithnephro', 'Kidney');
 
 INSERT INTO surgeons(userID, username, dob, password, surgeonType)
-VALUES('17', 'cdclark', '1984-09-13', 'clarkhead1203', 'Head');
+VALUES('12', 'cdclark', '1984-09-13', 'clarkhead1203', 'Head');
 
 INSERT INTO facilities(facilityName, facilityType, cityName, countryName)
 VALUES('John Hopkins', 'Hospital', 'Baltimore', 'United States');
@@ -152,14 +152,14 @@ VALUES('Foothills Medical Center', 'Hospital', 'Calgary', 'Canada');
 INSERT INTO facilities(facilityName, facilityType, cityName, countryName)
 VALUES('Seattle Grace', 'Hospital', 'Seattle', 'United States');
 
-INSERT INTO operations(operationNum, operationType, time, complete)
-VALUES('2314', 'Head', '2022-04-16', '0');
+INSERT INTO operations(operationNum, operationType, time, complete, surgeonID)
+VALUES('2314', 'Head', '2022-04-16', '0', '9');
 
-INSERT INTO operations(operationNum, operationType, time, complete)
-VALUES('2315', 'Heart', '2022-04-17', '0');
+INSERT INTO operations(operationNum, operationType, time, complete, surgeonID)
+VALUES('2315', 'Heart', '2022-04-17', '0', '9');
 
-INSERT INTO operations(operationNum, operationType, time, complete)
-VALUES('2316', 'Liver', '2022-05-11', '1');
+INSERT INTO operations(operationNum, operationType, time, complete, surgeonID)
+VALUES('2316', 'Liver', '2022-05-11', '1', '10');
 
-INSERT INTO operations(operationNum, operationType, time, complete)
-VALUES('2317', 'Kidney', '2022-06-14', '0');
+INSERT INTO operations(operationNum, operationType, time, complete, surgeonID)
+VALUES('2317', 'Kidney', '2022-06-14', '0', '11');

@@ -17,6 +17,12 @@ module.exports = app => {
     // Delete a Appointments with id
     router.delete("/appointments/:apptId", appointments.delete);
 
+    //Get all requested appointments
+    router.get("/appointments/requested/:req", appointments.findRequestedAppointments);
+
+    //Approve requested appointments
+    router.put("/appointments/requested/:id", appointments.setAppointmentFalse);
+
     // Set base route for the endpoints
     app.use('/api', router);
   };

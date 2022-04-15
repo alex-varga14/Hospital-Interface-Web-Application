@@ -1,6 +1,7 @@
 import api from './api';
 
 class OperationService {
+  
   create(data) {
     return api.post("http://localhost:8080/api/operations", data);
   }
