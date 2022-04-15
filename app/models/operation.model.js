@@ -20,6 +20,13 @@ module.exports = (sequelize, Sequelize) => {
               model: 'Surgeons',
               key: 'userID'
           }
+      },
+      facilityID: {
+        type: Sequelize.STRING,
+        references: {
+            model: 'Facilities',
+            key: 'facilityName'
+        }
       }
     },
     {
@@ -31,6 +38,12 @@ module.exports = (sequelize, Sequelize) => {
         name: 'surgeonID'
        }
       });
+
+      Operation.belongsTo(models.Facility, {foreignKey: {
+        name: 'facilityID'
+       }
+      });
+
     };
     
     return Operation;

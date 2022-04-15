@@ -24,7 +24,14 @@ module.exports = (sequelize, Sequelize) => {
             model: 'Patients',
             key: 'userID'
         }
-    }
+     },
+      facilityID: {
+          type: Sequelize.STRING,
+          references: {
+              model: 'Facilities',
+              key: 'facilityName'
+          }
+      }
     },
     {
         timestamps: false
@@ -34,6 +41,25 @@ module.exports = (sequelize, Sequelize) => {
       Doctor.belongsTo(models.Patient, {foreignKey: {
         name: 'patientID'
        }
+      });
+
+      Doctor.belongsTo(models.Facility, {foreignKey: {
+        name: 'facilityID'
+       }
+      });
+
+      Doctor.hasMany(models.appointment, {foreignKey: {
+        name: 'doctorID',
+        allowNull: true
+      },
+      onDelete: 'cascade'
+      });
+
+      Doctor.hasMany(models.prescription, {foreignKey: {
+        name: 'doctorID',
+        allowNull: true
+      },
+      onDelete: 'cascade'
       });
     };
 

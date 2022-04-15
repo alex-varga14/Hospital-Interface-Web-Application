@@ -19,7 +19,14 @@ module.exports = (sequelize, Sequelize) => {
             model: 'Patients',
             key: 'userID'
         }
-    }  
+     },
+     doctorID : {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'Doctors',
+          key: 'userID'
+      }
+     }  
     },
     {
         timestamps: false
@@ -28,6 +35,11 @@ module.exports = (sequelize, Sequelize) => {
     Prescription.associate = function(models){
       Prescription.belongsTo(models.Patient, {foreignKey: {
         name: 'patientID'
+       }
+      });
+
+      Prescription.belongsTo(models.Doctor, {foreignKey: {
+        name: 'doctorID'
        }
       });
     };

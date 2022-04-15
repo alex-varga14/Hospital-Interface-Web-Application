@@ -71,7 +71,8 @@ export default {
         operationType: "",
         time: "",
         complete: "",
-        surgeonID: null
+        surgeonID: null,
+        facilityID: "John Hopkins"
       },
       submitted: false
     };
@@ -87,7 +88,8 @@ export default {
         operationType: this.operation.operationType,
         time: this.operation.time,
         complete: false,
-        surgeonID: this.currentUser.id
+        surgeonID: this.currentUser.id,
+        facilityID: this.operation.facilityID
       };
       console.log("SURGID:"+ this.currentUser.id);
       if (this.operation.operationNum == undefined || this.operation.operationType == undefined || this.operation.time == undefined) {

@@ -24,6 +24,13 @@ module.exports = (sequelize, Sequelize) => {
             key: 'userID'
         }
       },
+      doctorID : {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Doctors',
+            key: 'userID'
+        }
+      },
       requested: {
         type: Sequelize.BOOLEAN
       }
@@ -35,6 +42,11 @@ module.exports = (sequelize, Sequelize) => {
     Appointment.associate = function(models){
       Appointment.belongsTo(models.Patient, {foreignKey: {
         name: 'patientID'
+       }
+      });
+
+      Appointment.belongsTo(models.Doctor, {foreignKey: {
+        name: 'doctorID'
        }
       });
     };

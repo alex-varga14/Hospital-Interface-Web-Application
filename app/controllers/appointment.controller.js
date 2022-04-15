@@ -23,7 +23,8 @@ exports.create = (req, res) => {
     bloodPressure: req.body.bloodPressure,
     temperature: req.body.temperature,
     patientID: req.body.patientID,
-    requested: req.body.requested
+    requested: req.body.requested,
+    doctorID: req.body.doctorID
   };
 
   // Save Appointment in the database

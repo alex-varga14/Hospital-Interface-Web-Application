@@ -22,7 +22,8 @@ exports.create = (req, res) => {
     instructions: req.body.instructions,
     refilDate: req.body.refilDate,
     medications: req.body.medications,
-    patientID: req.body.patientID
+    patientID: req.body.patientID,
+    doctorID: req.body.doctorID
   };
 
   // Save Prescription in the database

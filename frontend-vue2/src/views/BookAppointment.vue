@@ -112,7 +112,8 @@ export default {
         bloodPressure: 80,
         temperature: 37,
         patientID: this.currentUser.id,
-        requested: true
+        requested: true,
+        doctorId: 5
       };
       
       if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {

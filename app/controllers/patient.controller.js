@@ -75,7 +75,7 @@ exports.findAllPatients = (req, res) => {
 exports.getAllPatients = (req, res) => {
   
   sequelize.query(
-    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
+    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID COUNT(DISTINCT(Vaccines.batchNum)) as NumVaccines FROM Patients LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
       type: sequelize.QueryTypes.SELECT
     }
   )

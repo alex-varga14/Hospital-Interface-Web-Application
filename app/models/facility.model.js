@@ -17,6 +17,22 @@ module.exports = (sequelize, Sequelize) => {
     {
         timestamps: false
     });
+
+    Facility.associate = function(models) {
+      Facility.hasMany(models.Operation, {foreignKey: {
+        name: 'facilityID',
+        allowNull: true
+      },
+      onDelete: 'cascade'
+      });
+
+      Facility.hasMany(models.Doctor, {foreignKey: {
+        name: 'facilityID',
+        allowNull: true
+      },
+      onDelete: 'cascade'
+      });
+    };
     
     return Facility;
   };

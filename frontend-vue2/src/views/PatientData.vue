@@ -50,8 +50,8 @@
           <th scope="col">Weight</th>
           <th scope="col">Height</th>
           <th scope="col">Blood Type</th>
-          <!-- <th class="text-center" scope="col">Disorders</th>
-          <th class="text-center" scope="col">Vaccines</th>
+          <th class="text-center" scope="col">Disorders</th>
+          <!-- <th class="text-center" scope="col">Vaccines</th>
           <th class="text-center" scope="col">Bills</th> -->
         </tr>
       </thead>
@@ -62,8 +62,8 @@
           <td>{{patients.weight}}</td>
           <td>{{patients.height}}</td>
           <td>{{patients.bloodType}}</td>
-          <!-- <td class="text-center">{{patients.NumDisorders}}</td>
           <td class="text-center">{{patients.NumDisorders}}</td>
+          <!-- <td class="text-center">{{patients.NumDisorders}}</td>
           <td class="text-center">{{patients.NumDisorders}}</td> -->
           <button type=" button "  class="btn view-btn" @click="update(patients.userID)">
             View Patient Data
@@ -96,6 +96,8 @@ data() {
       PatientDataService.getAllPatients()
         .then(response => {
           this.patients = response.data;
+          // console.log("DISRODER:" + this.patients.NumDisorders);
+          // console.log("DISRODER:" + this.patients.NumVaccines);
           console.log(response.data);
         })
         .catch(e => {

@@ -22,7 +22,8 @@ exports.create = (req, res) => {
     operationType: req.body.operationType,
     time: req.body.time,
     complete: req.body.complete,
-    surgeonID: req.body.surgeonID
+    surgeonID: req.body.surgeonID,
+    facilityID: req.body.facilityID
   };
 
   // Save Operation in the database

@@ -35,13 +35,15 @@ db.vaccine = require("../models/vaccine.model.js")(sequelize, Sequelize);
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
-  otherKey: "userId"
+  otherKey: "userId",
+  timestamps: false
 });
 
 db.user.belongsToMany(db.role, {
   through: "user_roles",
   foreignKey: "userId",
-  otherKey: "roleId"
+  otherKey: "roleId",
+  timestamps: false
 });
 
 db.ROLES = ["user", "patient", "doctor", "surgeon"];
