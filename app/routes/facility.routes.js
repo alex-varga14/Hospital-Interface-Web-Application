@@ -14,6 +14,8 @@ module.exports = app => {
     // Delete a Facility with operationNum
     router.delete("/facilities/:facilityName", facilities.delete);
 
+    router.get("/facilities", facilities.findAllFacilites)
+
     // Set base route for the endpoints
     app.use('/api', router);
   };

@@ -101,3 +101,18 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+// Retrieve all Facilites from the database.
+exports.findAllFacilites = (req, res) => {
+
+  Facility.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving facilites."
+      });
+    });
+}; 
