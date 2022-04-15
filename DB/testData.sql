@@ -48,25 +48,46 @@ INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
 VALUES('1243', 'Pfizer', 'Covid', '123');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1245', 'Moderna', 'Covid', '124');
+VALUES('1244', 'Moderna', 'Covid', '124');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1246', 'Dengvaxia', 'Dengue', '124');
+VALUES('1245', 'Dengvaxia', 'Dengue', '124');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1247', 'Polio Gone', 'Polio', '125');
+VALUES('1246', 'Polio Gone', 'Polio', '125');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1248', 'HPV Vaccine', 'HPV', '126');
+VALUES('1247', 'HPV Vaccine', 'HPV', '126');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1249', 'Sinovac', 'Covid', '126');
+VALUES('1248', 'Sinovac', 'Covid', '126');
 
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
-VALUES('1250', 'MMRV', 'Measles', '126');
+VALUES('1249', 'MMRV', 'Measles', '126');
 
 INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
 VALUES('9782', 'Johnston Group', '2022-04-14', 'Toronto Dominion', '234', '123');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9783', 'TD Insurance', '2022-04-21', 'Toronto Dominion', '315', '123');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9784', 'Healthee Inc', '2022-05-11', 'Bank of Montreal', '100', '124');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9785', 'NotAFraud Corp', '2022-05-11', 'Scotiabank', '1000', '125');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9786', 'NotAFraud Corp', '2022-05-12', 'Scotiabank', '1000', '125');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9787', 'Medicare Inc', '2022-05-13', 'Toronto Dominion', '1231', '126');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9788', 'Medicare Inc', '2022-05-14', 'Toronto Dominion', '500', '126');
+
+INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
+VALUES('9789', 'Medicare Inc', '2022-05-25', 'Toronto Dominion', '5000', '126');
 
 INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
 VALUES('762', 'Exercise more', '2022-04-14', '80', '37', '123', '1');
@@ -74,11 +95,38 @@ VALUES('762', 'Exercise more', '2022-04-14', '80', '37', '123', '1');
 INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
 VALUES('761', 'Drink less', '2022-03-14', '80', '36', '123', '0');
 
+INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
+VALUES('763', 'Drink more vitamins', '2022-03-15', '81', '36', '124', '0');
+
+INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
+VALUES('764', 'At risk of heart attack', '2022-03-16', '80', '37', '125', '1');
+
+INSERT INTO appointments(apptID, summary, apptDate, bloodPressure, temperature, patientID, requested)
+VALUES('765', 'Eat more vegetables and sleep early', '2022-03-17', '80', '37', '126', '0');
+
 INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patientID)
 VALUES('8772', 'Take twice daily', '2022-05-14', 'Puffer', '123');
 
+INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patientID)
+VALUES('8773', 'Take one after every meal', '2022-05-17', 'Salbutamol', '124');
+
+INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patientID)
+VALUES('8774', 'Take two tablets before sleeping', '2022-05-29', 'Cefuroxime', '125');
+
+INSERT INTO prescriptions(prescID, instructions, refilDate, medications, patientID)
+VALUES('8775', 'Fast for eight hours before taking', '2022-06-19', 'Remdesivir', '126');
+
 INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
 VALUES('10', 'docman', '1972-01-10', 'docman123', 'Respiratory', '123');
+
+INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
+VALUES('11', 'doctorpepper', '1954-01-11', 'softdrink123', 'Cardiology', '124');
+
+INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
+VALUES('12', 'johnsmith', '1957-03-18', 'gramms2123', 'Ophthalmology', '125');
+
+INSERT INTO doctors(userID, username, dob, password, specialization, patientID)
+VALUES('13', 'joejoe', '1990-02-13', 'joe546', 'Respiratory', '126');
 
 INSERT INTO surgeons(userID, username, dob, password, surgeonType)
 VALUES('11', 'surman', '1973-01-10', 'surman123', 'Head');
