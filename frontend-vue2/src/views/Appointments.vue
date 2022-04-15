@@ -14,19 +14,19 @@
       <thead>
         <tr id="header">
           <th scope="col">ID</th>
+          <th scope="col">PatientID</th>
           <th scope="col">Date</th>
           <th scope="col">Summary</th>
-          <!-- <th scope="col">Faculty</th>
-          <th scope="col">Description</th> -->
+          <!-- <th scope="col">Description</th> -->
         </tr>
       </thead>
       <tbody>
         <tr v-for="appointments in appointments" v-bind:key="appointments" id="rows">
           <td id="code">{{appointments.apptID}}</td>
-          <td>{{appointments.apptDate}}</td>
+          <td>{{appointments.patientID}}</td>
+          <td>{{new Date(appointments.apptDate).toISOString().slice(0, 10)}}</td>
           <td>{{appointments.summary}}</td>
-          <!-- <td>{{aggregatecourses.Faculty}}</td>
-          <td>{{aggregatecourses.Description}}</td> -->
+          <!-- <td>{{aggregatecourses.Description}}</td>  -->
           <td>
               <button @click="approve(appointments.apptID)"  type="submit" class="btn approve-course">
                   Approve

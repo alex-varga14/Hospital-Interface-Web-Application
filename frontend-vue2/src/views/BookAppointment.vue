@@ -79,6 +79,11 @@ export default {
   components: {
     Datepicker
   },
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  },
   data() {
     console.log("SAVING COURSE...");
     return {
@@ -106,7 +111,7 @@ export default {
         apptDate: this.appointment.apptDate,
         bloodPressure: 80,
         temperature: 37,
-        patientID: 1,
+        patientID: this.currentUser.id,
         requested: true
       };
       

@@ -30,10 +30,6 @@
             <td>{{operations.operationType}}</td>
             <td>{{new Date(operations.time).toISOString().slice(0, 10)}}</td>
             <td>{{operations.complete}}</td>
-            
-            <!-- <button type=" button "  class="btn view-btn" @click="update(aggregatecourses.ID)">
-            View Reviews
-            </button> -->
           </tr>
         </tbody>
       </table>

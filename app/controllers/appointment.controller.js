@@ -81,7 +81,7 @@ exports.update = (req, res) => {
 
 // Delete a Appointment with the specified apptID in the request
 exports.delete = (req, res) => {
-  const apptId = req.params.apptID;
+  const apptId = req.params.id;
 
   Appointment.destroy({
     where: { apptID: apptId }

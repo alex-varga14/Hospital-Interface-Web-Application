@@ -14,7 +14,7 @@ class AppointmentService {
   }
 
   approveAppointment(id) {
-    return api.put("http://localhost:8080/api/appointments/requested/" + id, false);
+    return api.put("http://localhost:8080/api/appointments/requested/" + id);
   }
 
   getById(id) {
@@ -31,11 +31,6 @@ class AppointmentService {
 
 }
 export default new AppointmentService();
-
-
-
-
-
 
 // import axios from 'axios';
 // const API_URL = 'http://localhost:8080/api/test/';
