@@ -31,15 +31,29 @@
         />
       </div>
 
-    <div class = "form-group title-container">
-        <label for="title" class="labels">Enter desired appointment date</label>
-        <Datepicker
-        v-model="appointment.apptDate"
-        ></Datepicker>
+    <div class="row">
+      <div class = "col form-group title-container">
+          <label for="title" class="labels">Enter desired appointment date</label>
+          <Datepicker
+          v-model="appointment.apptDate"
+          ></Datepicker>
+      </div>
+      <div class="col form-group title-container">
+        <label for="docId" class="labels">Enter Doctor ID</label>
+          <input
+          type="text"
+          class="form-control"
+          id="docId"
+          required
+          v-model="appointment.doctorID"
+          name="docId"
+          placeholder="Doctor ID"
+        />
+        </div>
     </div>
 
     
-<!--      COURSE DESCRIPTION          -->
+<!--      Summary         -->
       <div class="form-group desc-container">
         <label for="description" class="labels">Reason for Visit</label>
         <textarea
@@ -85,7 +99,6 @@ export default {
     }
   },
   data() {
-    console.log("SAVING COURSE...");
     return {
       appointment: {
         id: null,
@@ -94,7 +107,8 @@ export default {
         bloodPressure: null,
         temperature: null,
         patientID: null,
-        requested: null
+        requested: null,
+        doctorID: null
       },
       submitted: false
     };
@@ -113,7 +127,7 @@ export default {
         temperature: 37,
         patientID: this.currentUser.id,
         requested: true,
-        doctorId: 5
+        doctorId: this.apppointment.doctorID
       };
       
       if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {

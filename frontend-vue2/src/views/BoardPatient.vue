@@ -11,9 +11,7 @@
             <button @click="pushInfo(currentUser.id)" type="button" class="btn btn-primary btn-block mb-4">View My Information</button>
         </div>
         <div class="col">
-          <router-link to="patient-bills">
-            <button type="button" class="btn btn-primary btn-block mb-4">Pay Bills</button>
-          </router-link>
+            <button @click="pushBills(currentUser.id)" type="button" class="btn btn-primary btn-block mb-4">Pay Bills</button>
         </div>
       </div>
       <div class="row">
@@ -53,6 +51,11 @@ export default {
     pushInfo(data){
       console.log("DATA:"  + data);
       this.$router.push({name: "patient-information",
+        params: { id:data }
+      });
+    },
+    pushBills(data){
+      this.$router.push({name: "patient-bills",
         params: { id:data }
       });
     },

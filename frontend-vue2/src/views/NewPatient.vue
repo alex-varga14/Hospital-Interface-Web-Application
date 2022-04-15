@@ -1,21 +1,20 @@
 <template>
-  <!-- <div id="writePresc" class="submit-form whole-page"> -->
 <div id="newPatient" class="submit-form whole-page">
   <!-- <div v-if="!submitted"> -->
     <div class="title-big text-center">
       Add New Patient
     </div>
-<!--       COURSE TITLE       -->
+<!--       Patient Username       -->
       <div class="form-group title-container">
-        <label for="title" class = "labels">Patient Name</label>
+        <label for="patientusername" class = "labels">Patient Usernmae</label>
         <input
           type="text"
           onkeydown="return /[a-z ]/i.test(event.key)"
           class="form-control"
-          id="title"
+          id="patientusername"
           required
-          name="title"
-          placeholder="John Smith"
+          name="patientusername"
+          placeholder="JohnSmith"
         />
       </div>
 

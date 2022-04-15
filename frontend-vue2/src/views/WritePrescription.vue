@@ -100,6 +100,11 @@ import PrescriptionDataService from "../services/prescription.service";
 
 export default {
   name: "writePresc",
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    }
+  },
   data() {
     return {
       prescription: {
@@ -107,7 +112,8 @@ export default {
         instructions: "",
         refilDate: "",
         medications: "",
-        patientID: null
+        patientID: null,
+        doctorID: null
       },
       submitted: false
     };
@@ -123,8 +129,10 @@ export default {
         instructions: this.prescription.instructions,
         refilDate: this.prescription.refilDate,
         medications: this.prescription.medications,
-        patientID: this.prescription.patientID
+        patientID: this.prescription.patientID,
+        doctorID: this.currentUser.id
       };
+      console.log("ID: "+ this.currentUser.id)
       if ( this.prescription.instructions == undefined || this.prescription.medications == undefined ) {
         alert("All fields must be filled out to write a new prescription.");
         this.newPrescription();

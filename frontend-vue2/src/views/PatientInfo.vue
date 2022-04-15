@@ -2,7 +2,12 @@
  <div id="patientInfo">
     <div class="container">
        <div class="row">
-           <label><span class="bold">{{currentPatient.username}}</span> - {{currentPatient.dob}} </label>
+         <div class="col">
+           <label>Patient Username: {{currentPatient.username}}</label>
+        </div>
+         <div class="col">
+           <label>Patient DOB: {{new Date(currentPatient.dob).toISOString().slice(0, 10)}} </label>
+           </div>
        </div>
     </div>
  </div>

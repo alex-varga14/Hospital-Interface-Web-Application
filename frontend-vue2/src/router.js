@@ -64,7 +64,8 @@ export const router = new Router({
       component: NewOperation
     },
     { 
-      path: '/patient-bills',
+      path: '/patient-bills/:id',
+      name: 'patient-bills',
       component: Bills
     },
     { 

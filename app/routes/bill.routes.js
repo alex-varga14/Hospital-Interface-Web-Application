@@ -6,10 +6,10 @@ module.exports = app => {
     router.post("/bills", bills.create);
     
     // Retrieve a single Bill with billID
-    router.get("/bills/:billID", bills.findBillByPK);
+    // router.get("/bills/:billID", bills.findBillByPK);
     
     //Retrieve bills by PatientID
-    router.get("/bills/patientID/:patientID", bills.findBillbyPatientID);
+    router.get("/bills/:id", bills.findBillbyPatientID);
 
     // Update a bills with billID
     router.put("/bills/:billID", bills.update);

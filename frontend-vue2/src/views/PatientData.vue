@@ -1,7 +1,5 @@
 <template>
   <div class="page-container" id="patientData">
-    <!-- <section class="section-app-face children-center grid-cover-container"> -->
-      <div class="grid-cover-content children-center">
         <div class="title-list text-center">
           Facility A - Patient Data
         </div>
@@ -9,39 +7,16 @@
           <div class="col-md-8" >
           </div>
       </div>
-     </div>
-    <!-- </section> -->
-   <div id="inline2">
-    <div class="info-box">
-      <p> Filler </p>
-    </div>
-
-    <div class="filters-left">
-        <label for="title filter">Patient Name</label>
-      <div class="title-filter">
-        <!-- <input type="text" class="form-control" placeholder="John Smith" style="width:600px height:500p"
-        id="title filter" v-on:input="filterCode" /> -->
-      </div>
-        <label for="faculty filter">Age</label>
-      <div class="faculty-filter">
-        <!-- <input type="text" class="form-control" placeholder="76" style="width:600px height:500p"
-        id="faculty filter" v-on:input="filterCode" /> -->
+      <div class="container">
+      <div class="row">
+        <div class="col">
+          <router-link to="add-patient">
+            <button  type="button" class="btn btn-primary btn-block mb-4">Add Patient</button>
+          </router-link>
+        </div>
       </div>
     </div>
-
-    <div class="filters-right">
-        <label for="code filter">Disorders</label>
-      <div class="code-filter">
-        <!-- <input type="text" class="form-control" placeholder="Aids" style="width:600px height:500p"
-          id="code filter" v-on:input="filterCode" /> -->
-      </div>
-        <label for="number filter">Vaccines</label>
-      <div class="number-filter">
-        <!-- <input type="number" class="form-control" placeholder="SARS" style="width:600px height:500p"
-        id="number filter" v-on:input="filterCode" /> -->
-      </div>
-    </div>
-  </div>
+   
       <table class="table" id="formtable">
       <thead>
         <tr id="header">
