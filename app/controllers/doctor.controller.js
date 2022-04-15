@@ -1,11 +1,11 @@
 const req = require("express/lib/request");
 const { sequelize } = require("../models");
 const db = require("../models");
-const patientModel = require("../models/patient.model");
-const Patient = db.patient;
+const doctorModel = require("../models/patient.model");
+const Doctor = db.doctor;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Appointment
+// Create and Save a new Doctor
 exports.create = (req, res) => {
   // Validate request
   if(!req.body.username)
@@ -16,55 +16,55 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Book an Appointment
-  const patient = {
+  // create doctor
+  const doctor = {
     username: req.body.username,
     dob: req.body.dob,
     password: req.body.password,
-    weight: req.body.weight,
-    height: req.body.height,
-    bloodType: req.body.bloodType
+    specialization: req.body.specialization,
+    patientID: req.body.patientID,
+    facilityID: req.body.facilityID
   };
 
-  // Save Appointment in the database
-  Patient.create(patient)
+  // Save Doctor in the database
+  Doctor.create(doctor)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating Patient."
+          err.message || "Some error occurred while creating Doctor."
       });
     });
 };
 
-// Search Patient by Primary Key
-exports.findPatientByPK = (req, res) => {
+// Search Doctor by Primary Key
+exports.findDoctorByPK = (req, res) => {
   const userId = req.params.userID;
 
-  Patient.findByPk(userId)
+  Doctor.findByPk(userId)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Patient with userID=" + userId
+        message: "Error retrieving Doctor with userID=" + userId
       });
     });
 };
 
-// Retrieve all Patients from the database.
-exports.findAllPatients = (req, res) => {
+// Retrieve all Doctors from the database.
+exports.findAllDoctors = (req, res) => {
   
-  Patient.findAll()
+    Doctor.findAll()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving patients."
+          err.message || "Some error occurred while retrieving Doctors."
       });
     });
 }; 
@@ -88,52 +88,52 @@ exports.getAllPatients = (req, res) => {
   });
 };
 
-// Update a Patient by the userID in the request
+// Update a Appointment by the userId in the request
 exports.update = (req, res) => {
   const userId = req.params.userID;
 
-  Patient.update(req.body, {
+  Doctor.update(req.body, {
     where: { userID: userId }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Patient was updated successfully."
+          message: "Doctor was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Patient with userID=${userId}. Maybe Patient was not found or req.body is empty!`
+          message: `Cannot update Doctor with userID=${userId}. Maybe Doctor was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Patient with userID=" + userId
+        message: "Error updating Doctor with userID=" + userId
       });
     });
 }; 
 
-// Delete a Patient with the specified apptID in the request
+// Delete a Doctor with the specified userID in the request
 exports.delete = (req, res) => {
   const userId = req.params.userID;
 
-  Patient.destroy({
+  Doctor.destroy({
     where: { userID: userId }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Patient was deleted successfully!"
+          message: "Doctor was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete Patient with userID=${userId}. Maybe Patient was not found!`
+          message: `Cannot delete Doctor with userID=${userId}. Maybe Doctor was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Patient with userID=" + userId
+        message: "Could not delete Doctor with userID=" + userId
       });
     });
 };

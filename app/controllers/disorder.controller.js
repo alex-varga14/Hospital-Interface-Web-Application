@@ -51,6 +51,31 @@ exports.findDisorderByPK = (req, res) => {
     });
 };
 
+// Update a Disorder by the patientID in the request
+exports.update = (req, res) => {
+  const pId = req.params.patientID;
+
+  Disorder.update(req.body, {
+    where: { patientID: pId }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Disorder was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update Disorder with patientID=${pId}. Maybe Disorder was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Disorder with patientID=" + pId
+      });
+    });
+}; 
+
 // Delete a Disorder with the specified disorderName in the request
 exports.delete = (req, res) => {
   const disorderName = req.params.disorderName;

@@ -15,7 +15,7 @@ exports.create = (req, res) => {
     });
     return;
   }
-  console.log("trying hard");
+  
   // Book an Prescription
   const prescription = {
     prescID: req.body.prescID,
@@ -38,78 +38,78 @@ exports.create = (req, res) => {
       });
     });
 };
-/*
-// Search Appointment by Primary Key
-exports.findAppointmentByPK = (req, res) => {
-  const apptId = req.params.apptId;
 
-  Appointment.findByPk(apptId)
+// Search Prescription by Primary Key
+exports.findPrescriptionByPK = (req, res) => {
+  const prescId = req.params.prescID;
+
+  Prescription.findByPk(prescId)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Appointment with apptId=" + apptId
+        message: "Error retrieving Prescription with prescID=" + prescId
       });
     });
 };
 
-// Update a Appointment by the apptID in the request
+// Update a Prescription by the patientID in the request
 exports.update = (req, res) => {
-  const apptId = req.params.apptId;
+  const patientId = req.params.patientID;
 
-  Appointment.update(req.body, {
-    where: { apptID: apptId }
+  Prescription.update(req.body, {
+    where: { patientID: patientId }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Appoimtment was updated successfully."
+          message: "Prescription was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Appoimtment with apptID=${apptId}. Maybe Apppointment was not found or req.body is empty!`
+          message: `Cannot update Prescription with patientID=${patientId}. Maybe Prescription was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Appointment with apptId=" + apptId
+        message: "Error updating Prescription with patientID=" + patientId
       });
     });
 }; 
 
-// Delete a Appointment with the specified apptID in the request
+// Delete a Prescription with the specified prescID in the request
 exports.delete = (req, res) => {
-  const apptId = req.params.apptID;
+  const prescId = req.params.prescID;
 
-  Appointment.destroy({
-    where: { apptID: apptId }
+  Prescription.destroy({
+    where: { prescID: prescId }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Appointment was deleted successfully!"
+          message: "Prescription was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete Appointment with appointmentID=${apptId}. Maybe Appointment was not found!`
+          message: `Cannot delete Prescription with prescID=${prescId}. Maybe Prescription was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Apppointment with appointmentID=" + apptId
+        message: "Could not delete Prescription with prescID=" + prescId
       });
     });
 };
 
 
-// Get appointment by PatientID
-exports.findAppointmentbyPatientID = (req, res) => {
+// Get Prescription by PatientID
+exports.findPrescriptionbyPatientID = (req, res) => {
     const patientID = req.params.patientID;
 
-    Appointment.findAll({
+    Prescription.findAll({
         where: {
             patientID: patientID
         }
@@ -120,7 +120,7 @@ exports.findAppointmentbyPatientID = (req, res) => {
     .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while retrieving Appointment by PatientID."
+            err.message || "Some error occurred while retrieving Prescription by PatientID."
         });
     });
-}; */
+}; 

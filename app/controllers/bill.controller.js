@@ -53,12 +53,12 @@ exports.findBillByPK = (req, res) => {
     });
 };
 
-// Update a Bill by the billID in the request
+// Update a Bill by the patientID in the request
 exports.update = (req, res) => {
-  const billID = req.params.billID;
+  const patientId = req.params.patientID;
 
   Bill.update(req.body, {
-    where: { billID: billID }
+    where: { patientID: patientId }
   })
     .then(num => {
       if (num == 1) {
@@ -67,13 +67,13 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Bill with billID=${billID}. Maybe Bill was not found or req.body is empty!`
+          message: `Cannot update Bill with patientID=${patientId}. Maybe Bill was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Appointment with apptId=" + apptId
+        message: "Error updating Bill with patientID=" + patientId
       });
     });
 }; 

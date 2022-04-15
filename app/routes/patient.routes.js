@@ -10,13 +10,12 @@ module.exports = app => {
     /*
     //Retrieve Patient by PatientID
     router.get("/patients/patientID/:patientID", appointments.findPatientbyPatientID);
-
-    // Update a Patient with apptID
-    router.put("/patients/:apptId", patients.update);
+*/
+    // Update a Patient with userID
+    router.put("/patients/:userID", patients.update);
   
     // Delete a Patient with id
-    router.delete("/patients/:apptId", patients.delete);
-*/
+    router.delete("/patients/:userID", patients.delete);
 
     // //get All patient and aggregate data
     // router.get("/patients", patients.getAllPatients)

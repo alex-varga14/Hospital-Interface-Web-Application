@@ -80,12 +80,12 @@ exports.update = (req, res) => {
     });
 }; 
 
-// Delete a Appointment with the specified apptID in the request
+// Delete a Appointment with the specified patientID in the request
 exports.delete = (req, res) => {
-  const apptId = req.params.id;
+  const patientId = req.params.id;
 
   Appointment.destroy({
-    where: { apptID: apptId }
+    where: { patientID: patientId }
   })
     .then(num => {
       if (num == 1) {
@@ -94,13 +94,13 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete Appointment with appointmentID=${apptId}. Maybe Appointment was not found!`
+          message: `Cannot delete Appointment with patientID=${patientId}. Maybe Appointment was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Apppointment with appointmentID=" + apptId
+        message: "Could not delete Apppointment with patientID=" + patientId
       });
     });
 };

@@ -4,19 +4,19 @@ module.exports = app => {
     
     // Create a new Prescription
     router.post("/prescriptions", prescriptions.create);
-  /*
-    // Retrieve a single Appointment with apptId
-    router.get("/appointments/:apptId", appointments.findAppointmentByPK);
-    
-    //Retrieve Appointments by PatientID
-    router.get("/appointments/patientID/:patientID", appointments.findAppointmentbyPatientID);
-
-    // Update a Appointment with apptID
-    router.put("/appointments/:apptId", appointments.update);
   
-    // Delete a Appointments with id
-    router.delete("/appointments/:apptId", appointments.delete);
- */
+    // Retrieve a single Prescription with apptId
+    router.get("/prescriptions/:prescID", prescriptions.findPrescriptionByPK);
+    
+    //Retrieve Prescription by PatientID
+    router.get("/prescriptions/patientID/:patientID", prescriptions.findPrescriptionbyPatientID);
+
+    // Update a Prescription with prescID
+    router.put("/prescriptions/:patientID", prescriptions.update);
+  
+    // Delete a Prescription with prescID
+    router.delete("/prescriptions/:prescID", prescriptions.delete);
+ 
     // Set base route for the endpoints
     app.use('/api', router);
   };

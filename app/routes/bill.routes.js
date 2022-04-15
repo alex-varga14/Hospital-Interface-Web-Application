@@ -11,8 +11,8 @@ module.exports = app => {
     //Retrieve bills by PatientID
     router.get("/bills/:id", bills.findBillbyPatientID);
 
-    // Update a bills with billID
-    router.put("/bills/:billID", bills.update);
+    // Update a bills with patientID
+    router.put("/bills/:patientID", bills.update);
   
     // Delete a bills with id
     router.delete("/bills/:billID", bills.delete);
