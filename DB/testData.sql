@@ -14,14 +14,56 @@ VALUES('124', 'jimSmith', '1965-01-10', 'dog12', '185', '190', 'A');
 INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
 VALUES('125', 'janeSmith', '1977-01-10', 'dog1', '135', '152', 'AB');
 
+INSERT INTO Patients(userID, username, dob, password, weight, height, bloodType)
+VALUES('126', 'johnDoe', '2001-12-11', 'password123', '180', '163', 'B');
+
 INSERT INTO EmergencyContacts(name, relationship, phoneNumber, patientID)
 VALUES('Barney Smith', 'Father', '403-666-6666', '123');
+
+INSERT INTO EmergencyContacts(name, relationship, phoneNumber, patientID)
+VALUES('Big Boy', 'Brother', '403-991-9191', '124');
+
+INSERT INTO EmergencyContacts(name, relationship, phoneNumber, patientID)
+VALUES('Isaac Newton', 'Mother', '587-111-1231', '125');
+
+INSERT INTO EmergencyContacts(name, relationship, phoneNumber, patientID)
+VALUES('Ratleen Smith', 'Sister', '403-901-8261', '126');
 
 INSERT INTO Disorders(disorderName, disorderType, patientID)
 VALUES('Asthma', 'Respiratory', '123');
 
+INSERT INTO Disorders(disorderName, disorderType, patientID)
+VALUES('Diabetes', 'Vascular', '124');
+
+INSERT INTO Disorders(disorderName, disorderType, patientID)
+VALUES('Pneumonia', 'Respiratory', '125');
+
+INSERT INTO Disorders(disorderName, disorderType, patientID)
+VALUES('Emphysema', 'Respiratory', '126');
+
 INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
 VALUES('1242', 'Hepatitis B', 'Hepatitis', '123');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1243', 'Pfizer', 'Covid', '123');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1245', 'Moderna', 'Covid', '124');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1246', 'Dengvaxia', 'Dengue', '124');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1247', 'Polio Gone', 'Polio', '125');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1248', 'HPV Vaccine', 'HPV', '126');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1249', 'Sinovac', 'Covid', '126');
+
+INSERT INTO Vaccines(batchNum, vaccineName, disease, patientID)
+VALUES('1250', 'MMRV', 'Measles', '126');
 
 INSERT INTO bills(billID, insurance, billDate, bank, price, patientID)
 VALUES('9782', 'Johnston Group', '2022-04-14', 'Toronto Dominion', '234', '123');
