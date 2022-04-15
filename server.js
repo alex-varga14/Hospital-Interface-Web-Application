@@ -50,6 +50,8 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes")(app)
 require("./app/routes/user.routes")(app)
 require("./app/routes/patient.routes")(app)
+require("./app/routes/doctor.routes")(app)
+require("./app/routes/surgeon.routes")(app)
 require("./app/routes/appointment.routes")(app)
 require("./app/routes/prescription.routes")(app)
 require("./app/routes/bill.routes")(app)

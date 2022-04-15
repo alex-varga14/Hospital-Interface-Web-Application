@@ -55,12 +55,12 @@ exports.findAppointmentByPK = (req, res) => {
     });
 };
 
-// Update a Appointment by the apptID in the request
+// Update a Appointment by the docId in the request
 exports.update = (req, res) => {
-  const apptId = req.params.apptId;
+  const docId = req.params.doctorID;
 
   Appointment.update(req.body, {
-    where: { apptID: apptId }
+    where: { doctorID: docId }
   })
     .then(num => {
       if (num == 1) {
@@ -69,13 +69,13 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Appoimtment with apptID=${apptId}. Maybe Apppointment was not found or req.body is empty!`
+          message: `Cannot update Appoimtment with doctorID=${docId}. Maybe Apppointment was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Appointment with apptId=" + apptId
+        message: "Error updating Appointment with doctorID=" + docId
       });
     });
 }; 

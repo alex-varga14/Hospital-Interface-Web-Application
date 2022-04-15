@@ -37,6 +37,31 @@ exports.create = (req, res) => {
     });
 };
 
+// Update a EC by the patientID in the request
+exports.update = (req, res) => {
+  const patientId = req.params.patientID;
+
+  EmergencyContact.update(req.body, {
+    where: { patientID: patientId }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "EmergencyContact was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update EmergencyContact with patientID=${patientId}. Maybe EmergencyContact was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating EmergencyContact with patientID=" + patientId
+      });
+    });
+}; 
+
 // Delete a EmergencyContact with the specified patientID in the request
 exports.delete = (req, res) => {
   const patientID = req.params.patientID;

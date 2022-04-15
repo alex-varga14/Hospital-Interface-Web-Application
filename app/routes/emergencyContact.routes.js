@@ -8,6 +8,9 @@ module.exports = app => {
     //Retrieve emergency Contact by PatientID
     router.get("/emergency-contacts/patientID/:id", emergencyContacts.findEmergencyContactbyPatientID);
 
+    // Update a emergency Contact with patientID
+    router.put("/emergency-contacts/:patientID", emergencyContacts.update);
+    
     // Delete a emergency Contact with patientID
     router.delete("/emergency-contacts/:patientID", emergencyContacts.delete);
     

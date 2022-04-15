@@ -20,11 +20,6 @@
            <button type="button" class="btn btn-primary btn-block mb-4">Book Appointment</button>
           </router-link>
         </div>
-        <div class="col">
-          <!-- <router-link to=""> -->
-            <button type="button" class="btn btn-primary btn-block mb-4">Request Prescription</button>
-          <!-- </router-link> -->
-        </div>
       </div>
     </div>
     

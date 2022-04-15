@@ -1,7 +1,7 @@
 const req = require("express/lib/request");
 const { sequelize } = require("../models");
 const db = require("../models");
-const doctorModel = require("../models/patient.model");
+const doctorModel = require("../models/doctor.model");
 const Doctor = db.doctor;
 const Op = db.Sequelize.Op;
 
@@ -68,25 +68,6 @@ exports.findAllDoctors = (req, res) => {
       });
     });
 }; 
-
-// Get all Patients, as well as connected information
-exports.getAllPatients = (req, res) => {
-  
-  sequelize.query(
-    'SELECT Patients.userID, Patients.username, Patients.dob, Patients.weight, Patients.height, Patients.bloodType, COUNT(DISTINCT(Disorders.disorderName)) as NumDisorders FROM Patients LEFT OUTER JOIN Disorders ON Disorders.patientID = Patients.userID COUNT(DISTINCT(Vaccines.batchNum)) as NumVaccines FROM Patients LEFT OUTER JOIN Vaccines ON Vaccines.patientID = Patients.userID LEFT OUTER JOIN Bills ON Bills.patientID = Patients.userID;', {
-      type: sequelize.QueryTypes.SELECT
-    }
-  )
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occured while retrieving patients with aggregates."
-    });
-  });
-};
 
 // Update a Appointment by the userId in the request
 exports.update = (req, res) => {

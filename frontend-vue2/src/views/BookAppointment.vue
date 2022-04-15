@@ -31,14 +31,14 @@
         />
       </div>
 
-    <div class="row">
-      <div class = "col form-group title-container">
+      <div class = "form-group title-container">
           <label for="title" class="labels">Enter desired appointment date</label>
           <Datepicker
           v-model="appointment.apptDate"
           ></Datepicker>
       </div>
-      <div class="col form-group title-container">
+
+      <div class=" form-group title-container">
         <label for="docId" class="labels">Enter Doctor ID</label>
           <input
           type="text"
@@ -50,7 +50,7 @@
           placeholder="Doctor ID"
         />
         </div>
-    </div>
+  
 
     
 <!--      Summary         -->
@@ -127,7 +127,7 @@ export default {
         temperature: 37,
         patientID: this.currentUser.id,
         requested: true,
-        doctorId: this.apppointment.doctorID
+        doctorId: 5
       };
       
       if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {
@@ -192,9 +192,9 @@ input::-webkit-inner-spin-button {
   margin-left: 0px;
   margin-right: 0px;
 }
-.courseno-container {
-  margin-left: 20px;
-  margin-right: -140px;
+.docId-container {
+  margin-left: 10px;
+  margin-right: -180px;
 }
 .desc-container {
   margin-top: 30px;
