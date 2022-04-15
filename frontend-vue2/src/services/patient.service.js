@@ -22,9 +22,9 @@ class PatientService {
     return api.get("http://localhost:8080/api/patients/patientID/:" + id);
   }
   */
-
   getAllPatients(){
     return api.get("http://localhost:8080/api/patients");
   }
+  
 }
 export default new PatientService();

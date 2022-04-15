@@ -22,7 +22,8 @@ module.exports = app => {
     // router.get("/patients", patients.getAllPatients)
     
     //get All patient and aggregate data
-    router.get("/patients", patients.getAllPatients)
+    //router.get("/patients", patients.getAllPatients)
+    router.get("/patients", patients.findAllPatients)
 
     // Set base route for the endpoints
     app.use('/api', router);

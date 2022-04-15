@@ -53,13 +53,13 @@ exports.findPatientByPK = (req, res) => {
       });
     });
 };
-/*
+
 // Retrieve all Patients from the database.
 exports.findAllPatients = (req, res) => {
   const username = req.query.username;
-  var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+  //var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
 
-  Patient.findAll({ where: condition })
+  Patient.findAll()
     .then(data => {
       res.send(data);
     })
@@ -69,7 +69,7 @@ exports.findAllPatients = (req, res) => {
           err.message || "Some error occurred while retrieving patients."
       });
     });
-}; */
+}; 
 
 // Get all Patients, as well as connected information
 exports.getAllPatients = (req, res) => {

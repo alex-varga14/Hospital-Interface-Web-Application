@@ -50,21 +50,21 @@
           <th scope="col">Weight</th>
           <th scope="col">Height</th>
           <th scope="col">Blood Type</th>
-          <th class="text-center" scope="col">Disorders</th>
+          <!-- <th class="text-center" scope="col">Disorders</th>
           <th class="text-center" scope="col">Vaccines</th>
-          <th class="text-center" scope="col">Bills</th>
+          <th class="text-center" scope="col">Bills</th> -->
         </tr>
       </thead>
       <tbody>
         <tr v-for="patients in patients" v-bind:key="patients" id="rows">
           <td id="code">{{patients.username}}</td>
-          <td>{{patients.dob}}</td>
+          <td>{{new Date(patients.dob).toISOString().slice(0, 10)}}</td>
           <td>{{patients.weight}}</td>
           <td>{{patients.height}}</td>
           <td>{{patients.bloodType}}</td>
+          <!-- <td class="text-center">{{patients.NumDisorders}}</td>
           <td class="text-center">{{patients.NumDisorders}}</td>
-          <td class="text-center">{{patients.NumDisorders}}</td>
-          <td class="text-center">{{patients.NumDisorders}}</td>
+          <td class="text-center">{{patients.NumDisorders}}</td> -->
           <button type=" button "  class="btn view-btn" @click="update(patients.userID)">
             View Patient Data
           </button>
@@ -88,7 +88,7 @@ export default {
 name: "patientData",
 data() {
   return {
-      patients: [],
+      patients: []
     };
   },
   methods: {
@@ -107,21 +107,7 @@ data() {
         params: { id:data }
       });
     },
-    // refreshList() {
-    //   this.retrieveCourses();
-    //   this.currentCourse = null;
-    //   this.currentIndex = -1;
-    // },
-    // removeAllCourses() {
-    //   CourseDataService.deleteAll()
-    //   .then(response => {
-    //       console.log(response.data);
-    //       this.refreshList();
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
+    
     // filterCode: function(){
     // var text, table, tableRows, td, i, txtValue,tdTwo,textTwo;
     // var tdThree, textThree, tdFour, textFour;
