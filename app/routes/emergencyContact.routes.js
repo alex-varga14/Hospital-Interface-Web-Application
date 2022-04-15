@@ -6,7 +6,7 @@ module.exports = app => {
     router.post("/emergency-contacts", emergencyContacts.create);
     
     //Retrieve emergency Contact by PatientID
-    router.get("/emergency-contacts/patientID/:patientID", emergencyContacts.findEmergencyContactbyPatientID);
+    router.get("/emergency-contacts/patientID/:id", emergencyContacts.findEmergencyContactbyPatientID);
 
     // Delete a emergency Contact with patientID
     router.delete("/emergency-contacts/:patientID", emergencyContacts.delete);

@@ -64,7 +64,7 @@ exports.delete = (req, res) => {
 
 // Get EmergencyContact by PatientID
 exports.findEmergencyContactbyPatientID = (req, res) => {
-    const patientID = req.params.patientID;
+    const patientID = req.params.id;
 
     EmergencyContact.findAll({
         where: {

@@ -14,7 +14,6 @@ class FacilityService {
   }
   */
 
-
   /*
   getByFacilityID(id) {
     return api.get("http://localhost:8080/api/facilities/:" + id);
