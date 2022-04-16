@@ -118,13 +118,13 @@ exports.delete = (req, res) => {
       });
     });
 };
-/*
 
-// Get all Ratings of a specific course
-exports.findAppointmentbyPatientID = (req, res) => {
+
+// Get Doctor by patientID in request
+exports.findDoctorbyPatientID = (req, res) => {
     const patientID = req.params.patientID;
 
-    Appointment.findAll({
+    Doctor.findAll({
         where: {
             patientID: patientID
         }
@@ -135,11 +135,11 @@ exports.findAppointmentbyPatientID = (req, res) => {
     .catch(err => {
         res.status(500).send({
             message:
-            err.message || "Some error occurred while retrieving Appointment by PatientID."
+            err.message || "Some error occurred while retrieving Doctor by PatientID."
         });
     });
 };
-*/
+
 
 /*
 // Delete all Courses from the database.

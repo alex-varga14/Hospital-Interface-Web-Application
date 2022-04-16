@@ -81,7 +81,7 @@ exports.update = (req, res) => {
 }; 
 
 // Delete a Appointment with the specified patientID in the request
-exports.delete = (req, res) => {
+exports.deleteByPatientID = (req, res) => {
   const patientId = req.params.id;
 
   Appointment.destroy({
@@ -101,6 +101,31 @@ exports.delete = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: "Could not delete Apppointment with patientID=" + patientId
+      });
+    });
+};
+
+// Delete a Appointment with the specified apptID in the request
+exports.deleteByApptID = (req, res) => {
+  const apptId = req.params.id;
+
+  Appointment.destroy({
+    where: { apptID: apptId }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Appointment was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Appointment with apptID=${apptId}. Maybe Appointment was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Apppointment with apptID=" + apptId
       });
     });
 };

@@ -16,9 +16,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <router-link to="book-appointment">
-           <button type="button" class="btn btn-primary btn-block mb-4">Book Appointment</button>
-          </router-link>
+           <button @click="pushAppointment(currentUser.id)" type="button" class="btn btn-primary btn-block mb-4">Book Appointment</button>
         </div>
       </div>
     </div>
@@ -51,6 +49,11 @@ export default {
     },
     pushBills(data){
       this.$router.push({name: "patient-bills",
+        params: { id:data }
+      });
+    },
+    pushAppointment(data){
+      this.$router.push({name: "book-appointment",
         params: { id:data }
       });
     },

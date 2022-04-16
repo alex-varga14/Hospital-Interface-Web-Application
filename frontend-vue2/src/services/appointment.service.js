@@ -9,10 +9,14 @@ class AppointmentService {
     return api.put(`/appointments/${id}`, data);
   }
 
-  delete(id) {
+  deleteByPatientID(id) {
     return api.delete("http://localhost:8080/api/appointments/" + id);
   }
 
+  deleteByApptID(id) {
+    return api.delete("http://localhost:8080/api/appointments/apptID/" + id);
+  }
+  
   approveAppointment(id) {
     return api.put("http://localhost:8080/api/appointments/requested/" + id);
   }

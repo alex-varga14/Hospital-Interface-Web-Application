@@ -74,10 +74,9 @@ data() {
     },
    deny(id){
       window.alert("Appointment Denied!");
-      AppointmentDataService.delete(id)
+      AppointmentDataService.deleteByApptID(id)
           .then( response => {
             if(response){
-              //this.retrieveCourses();
               this.retrieveRequestedAppointments();
               this.$delete(this.appointments, id);
             }
@@ -85,20 +84,7 @@ data() {
           .catch( e => {
              console.log(e);
           });
-      
-      // this.refresh();
-      // this.$forceUpdate();
     },
-    // retrieveCourses() {
-    //   CourseDataService.getAll()
-    //     .then(response => {
-    //       this.courses = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(e => {
-    //       console.log(e);
-    //     });
-    // },
     retrieveRequestedAppointments(){
       AppointmentDataService.getRequestedAppointments()
       .then(response => {
@@ -115,7 +101,6 @@ data() {
   },
   
   mounted() {
-    //this.retrieveCourses();
     this.retrieveRequestedAppointments();
   }
 };

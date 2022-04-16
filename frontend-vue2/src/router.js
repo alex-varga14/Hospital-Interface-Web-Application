@@ -35,7 +35,8 @@ export const router = new Router({
       component: Register
     },
     {
-      path: '/book-appointment',
+      path: '/book-appointment/:id',
+      name: 'book-appointment',
       component: BookAppointment
     },
     {

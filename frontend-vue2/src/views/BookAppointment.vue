@@ -37,21 +37,6 @@
           v-model="appointment.apptDate"
           ></Datepicker>
       </div>
-
-      <div class=" form-group title-container">
-        <label for="docId" class="labels">Enter Doctor ID</label>
-          <input
-          type="text"
-          class="form-control"
-          id="docId"
-          required
-          v-model="appointment.doctorID"
-          name="docId"
-          placeholder="Doctor ID"
-        />
-        </div>
-  
-
     
 <!--      Summary         -->
       <div class="form-group desc-container">
@@ -86,6 +71,7 @@
 
 <script>
 import AppointmentDataService from "../services/appointment.service";
+import DoctorDataService from "../services/doctor.service";
 import Datepicker from 'vuejs-datepicker';
 
 export default {
@@ -110,7 +96,8 @@ export default {
         requested: null,
         doctorID: null
       },
-      submitted: false
+      submitted: false,
+      currentPatientDoctor: null
     };
   },
   methods: {
@@ -127,7 +114,7 @@ export default {
         temperature: 37,
         patientID: this.currentUser.id,
         requested: true,
-        doctorId: 5
+        doctorID: this.currentPatientDoctor
       };
       
       if (this.appointment.summary == undefined || this.appointment.apptDate == undefined) {
@@ -137,7 +124,6 @@ export default {
       else{
         AppointmentDataService.create(data)
         .then(response => {
-          //this.appointment.id = response.data.id;
           this.appointment = response.data;
           console.log(response.data);
           this.submitted = true;
@@ -147,6 +133,19 @@ export default {
         });
       }
     },
+    findPatientDoctor(id) {
+        DoctorDataService.getByPatientID(id)
+        .then(response => {
+          this.currentPatientDoctor = response.data[0].userID;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+  },
+  mounted() {
+    this.findPatientDoctor(this.$route.params.id);
   }
 };
 </script>
@@ -162,7 +161,7 @@ input::-webkit-inner-spin-button {
   color: black;
 }
 .title-big {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 40px;
   line-height: 60px;
   color: #000000;
@@ -177,25 +176,7 @@ input::-webkit-inner-spin-button {
   margin-right: -140px;
   margin-bottom: 30px;
 }
-#inline3{
-  width:100%;
-  height:auto;
-  background-color:white;
-  display:flex;
-  margin-bottom: 15px;
-}
-.faculty-container {
-  margin-left: -130px;
-  margin-right: 10px;
-}
-.coursecode-container {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.docId-container {
-  margin-left: 10px;
-  margin-right: -180px;
-}
+
 .desc-container {
   margin-top: 30px;
   margin-bottom: 40px;
@@ -207,19 +188,7 @@ input::-webkit-inner-spin-button {
   margin-left: -40px;
   margin-right: 20px;
 }
-.message{
-  font-size: 12px;
-  color: grey;
-  padding-top: 25px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: -130px;
-  margin-right: -140px;
-  border: 1px dotted grey;
-}
+
 .submit-form {
   max-width: 300px;
   margin: auto;

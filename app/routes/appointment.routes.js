@@ -14,8 +14,11 @@ module.exports = app => {
     // Update a Appointment with doctorID
     router.put("/appointments/:doctorID", appointments.update);
   
-    // Delete a Appointments with id
-    router.delete("/appointments/:id", appointments.delete);
+    // Delete a Appointments with patientID
+    router.delete("/appointments/:id", appointments.deleteByPatientID);
+
+     // Delete a Appointments with apptID
+     router.delete("/appointments/apptID/:id", appointments.deleteByApptID);
 
     //Get all requested appointments
     router.get("/appointments/requested/:req", appointments.findRequestedAppointments);

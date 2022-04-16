@@ -7,10 +7,10 @@ module.exports = app => {
   
     // Retrieve a single doctors with userId
     router.get("/doctors/:userID", doctors.findDoctorByPK);
-    /*
+    
     //Retrieve doctor by PatientID
-    router.get("/patients/patientID/:patientID", appointments.findPatientbyPatientID);
-*/
+    router.get("/doctors/patientID/:patientID", doctors.findDoctorbyPatientID);
+
     // Update a Patient with userID
     router.put("/doctors/:userId", doctors.update);
   
