@@ -5,17 +5,17 @@
 // – /api/test/patient for users having patient role
 // – /api/test/surgeon for users having surgeon role
  exports.allAccess = (req, res) => {
-    res.status(200).send("Public Content.");
+    res.status(200).send("Public Information");
   };
 exports.userBoard = (req, res) => {
-    res.status(200).send("User Content.");
+    res.status(200).send("User Information");
   };
 exports.patientBoard = (req, res) => {
-    res.status(200).send("Patient Content.");
+    res.status(200).send("Patient Access");
   };
 exports.doctorBoard = (req, res) => {
-    res.status(200).send("Doctor Content.");
+    res.status(200).send("Doctor Access");
   };
 exports.surgeonBoard = (req, res) => {
-    res.status(200).send("Surgeon Content.");
+    res.status(200).send("Surgeon Access");
   };

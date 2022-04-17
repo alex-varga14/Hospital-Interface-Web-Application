@@ -2,7 +2,7 @@
   <div id="patient">
    <div class="container">
       <header class="jumbotron">
-       <h3>{{content}} | {{currentUser.id}}</h3>
+       <h3>{{content}}</h3>
       </header>
     </div>
     <div class="container">

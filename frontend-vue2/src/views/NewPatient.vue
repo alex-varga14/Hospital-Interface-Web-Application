@@ -1,179 +1,226 @@
 <template>
 <div id="newPatient" class="submit-form whole-page">
-  <!-- <div v-if="!submitted"> -->
+  <div v-if="!submitted">
     <div class="title-big text-center">
       Add New Patient
     </div>
 <!--       Patient Username       -->
       <div class="form-group title-container">
-        <label for="patientusername" class = "labels">Patient Usernmae</label>
+        <label for="patientusername" class = "labels">Patient Username</label>
         <input
           type="text"
           onkeydown="return /[a-z ]/i.test(event.key)"
           class="form-control"
           id="patientusername"
           required
+          v-model="patient.username"
           name="patientusername"
           placeholder="JohnSmith"
         />
       </div>
 
     <div class="inline3">
-<!--         FACULTY         -->
+<!--         Patient DOB         -->
         <div class="form-group faculty-container">
-          <label for="faculty" class = "labels">Emergency Contact</label>
+          <label for="dob" class = "labels">Patient DOB</label>
           <input
-            type="text"
-            onkeydown="return /[a-z ]+$/i.test(event.key)"
+            type="Date"
             class="form-control"
-            id="faculty"
+            id="dob"
             required
-            name="faculty"
-            placeholder="Emily Smith"
+            v-model="patient.dob"
+            name="dob"
           />
         </div>
-<!--        COURSE CODE         -->
+<!--        Patient Password         -->
         <div class="form-group coursecode-container">
-          <label for="coursecode" class = "labels">Disorder Info</label>
+          <label for="password" class = "labels">Patient Password</label>
           <input
             type="text"
             onkeydown=" return /[a-z]/i.test(event.key)"
             class="form-control"
-            id="coursecode"
+            id="password"
             required
-            name="coursecode"
-            placeholder="Brain Disesase"
+            v-model="patient.password"
+            name="password"
           />
         </div>
-<!--        COURSE NUMBER          -->
-        <div class="form-group courseno-container">
-          <label for="courseno" class = "labels">Vaccine Info</label>
-          <input
-            type="text"
-            class="form-control"
-            id="courseno"
-            required
-            name="courseno"
-            placeholder="SARS, HEPATITIS"/>
-        </div>
-      </div>  <!--end div inline3-->
+      </div>  
 
       <div class ="inline3">
-<!--         FACULTY         -->
+<!--       P height         -->
         <div class="form-group faculty-container">
-          <label for="faculty" class = "labels">Patient Height</label>
+          <label for="height" class = "labels">Patient Height</label>
           <input
             type="text"
-            onkeydown="return /[a-z ]+$/i.test(event.key)"
             class="form-control"
-            id="faculty"
+            id="height"
             required
-            name="faculty"
-            placeholder="7 ft"
+            v-model="patient.height"
+            name="height"
+            placeholder="170 cm"
           />
         </div>
-<!--        COURSE CODE         -->
+<!--        Weight         -->
         <div class="form-group coursecode-container">
-          <label for="coursecode" class = "labels">Patient Weight</label>
+          <label for="Weight" class = "labels">Patient Weight</label>
           <input
             type="text"
-            onkeydown=" return /[a-z]/i.test(event.key)"
             class="form-control"
-            id="coursecode"
+            id="Weight"
             required
-            name="coursecode"
+            v-model="patient.weight"
+            name="Weight"
             placeholder="120kg"
           />
         </div>
-<!--        COURSE NUMBER          -->
+<!--        Blood type          -->
         <div class="form-group courseno-container">
-          <label for="courseno" class = "labels">Patient BloodType</label>
+          <label for="btype" class = "labels">Patient BloodType</label>
           <input
             type="text"
             class="form-control"
-            id="courseno"
+            id="btype"
             required
-            name="courseno"
+            v-model="patient.bloodType"
+            name="btype"
             placeholder="O"/>
         </div>
       </div>
-<!--           SUBMIT BUTTON          -->
-      <!-- <button @click="saveCourse" class="btn btn-success submit-btn text-center">Send Prescription</button> -->
-       <button  class="btn btn-success submit-btn text-center">Add Patient to Facility Database</button>
-<!--            MESSAGE               -->
-      <!-- <div class="message">
-        <p class="text-center"> Requested Appointment Will be Reviewed by Doctor.</p>
-      </div> -->
-    <!-- </div> -->
-<!--            SUBMITTED            -->
-    <!-- <div v-else>
-      <h4 class ="title-big text-center">Course Submitted!</h4>
-      <div class ="message">
-        <p class="text-center"> Your suggested course will be reviewed by a Course Critic administrator. 
-                                Only selected courses will be added to Course Critic. Selections will be made
-                                based on the number of suggestions for a course. 
-        </p>
+
+      <div class ="inline3">
+<!--       P EC name         -->
+        <div class="form-group faculty-container">
+          <label for="ecname" class = "labels">Emergency Contact Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ecname"
+            required
+            v-model="ec.name"
+            name="ecname"
+          />
+        </div>
+<!--        P EC relationship        -->
+        <div class="form-group coursecode-container">
+          <label for="ecr" class = "labels">Emergency Contact Relationship</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ecr"
+            required
+            v-model="ec.relationship"
+            name="ecr"
+          />
+        </div>
+<!--        P EC phonenum          -->
+        <div class="form-group courseno-container">
+          <label for="phonenum" class = "labels">Emergency Contact Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phonenum"
+            required
+            v-model="ec.phoneNumber"
+            name="phonenum"/>
+        </div>
       </div>
-      <button class="btn btn-success submit-btn text-center" @click="newCourse">Suggest Another Course</button>
-    </div> -->
+<!--           SUBMIT BUTTON          -->
+       <button @click="savePatient" class="btn btn-success submit-btn text-center">Add Patient to Facility Database</button>
+
+    </div>
+<!--            SUBMITTED            -->
+    <div v-else>
+      <h4 class ="title-big text-center">Patient Entered Into Database!</h4>
+      <button class="btn btn-success submit-btn text-center" @click="newPatient">Enter Another Patient</button>
+    </div>
   </div>
 </template>
 
 <script>
-//import CourseDataService from "../services/CourseDataService";
+import PatientDataService from "../services/patient.service";
+import EmergencyContactDataService from "../services/emergency-contact.service";
+
 export default {
   name: "newPatient",
-//   data() {
-//     console.log("SAVING COURSE...");
-//     return {
-//       course: {
-//         id: null,
-//         Title: "",
-//         Description: "",
-//         Faculty: "",
-//         CourseNo: null,
-//         CourseCode: "",
-//         Suggested: null,
-//       },
-//       submitted: false
-//     };
-//   },
-//   methods: {
-//     newCourse() {
-//       this.submitted = false;
-//       this.course = {};
-//     },
-//     saveCourse() {
-//       console.log("SAVING COURSE...");
-//       var data = {
-        
-//         Title: this.course.title,
-//         Description: this.course.description,
-//         Faculty: this.course.faculty,
-//         CourseNo: this.course.courseno,
-//         CourseCode: this.course.coursecode,
-//         Suggested: true
-//       };
+  data() {
+    return {
+      patient: {
+        username: "",
+        dob: "",
+        password: "",
+        weight: null,
+        height: null,
+        bloodType: "",
+      },
+      pID: null,
+      ec: {
+        name: "",
+        relationship: "",
+        phoneNumber: "",
+        patientID: null,
+      },
+      submitted: false
+    };
+  },
+  methods: {
+    newPatient() {
+      this.submitted = false;
+      this.patient = {};
+    },
+    savePatientEC(id) {
+      var data = {
+        name: this.ec.name,
+        relationship: this.ec.relationship,
+        phoneNumber: this.ec.phoneNumber,
+        patientID: id
+      };
       
-//       if (this.course.title == undefined || this.course.faculty == undefined || this.course.coursecode == undefined 
-//         || this.course.courseno == undefined || this.course.description == undefined) {
-//         alert("All fields must be filled out to suggest a new course");
-//         this.newCourse();
-//       }
-//       else{
-//         CourseDataService.create(data)
-//         .then(response => {
-//           this.course.id = response.data.id;
-//           this.course = response.data;
-//           console.log(response.data);
-//           this.submitted = true;
-//         })
-//         .catch(e => {
-//           console.log(e);
-//         });
-//       }
-//     },
-//   }
+      if (this.ec.name == undefined || this.ec.relationship == undefined || this.ec.phoneNumber == undefined ) {
+        alert("All fields must be filled out to input a new Patient");
+        this.newPatient();
+      }
+      else{
+        EmergencyContactDataService.create(data)
+        .then(response => {
+          this.ec = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      }
+    },
+    savePatient() {
+      var data = {
+        username: this.patient.username,
+        dob: this.patient.dob,
+        password: this.patient.password,
+        weight: this.patient.weight,
+        height: this.patient.height,
+        bloodType: this.patient.bloodType
+      };
+      
+      if (this.patient.username == undefined || this.patient.dob == undefined || this.patient.password == undefined 
+        || this.patient.weight == undefined || this.patient.height == undefined) {
+        alert("All fields must be filled out to input a new Patient.");
+        this.newPatient();
+      }
+      else{
+        PatientDataService.create(data)
+        .then(response => {
+          this.patient = response.data;
+          this.pID = response.data.userID;
+          this.savePatientEC(this.pID);
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      }
+    },
+  }
 };
 </script>
 

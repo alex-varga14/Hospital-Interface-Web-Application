@@ -25,9 +25,6 @@
           <th scope="col">Weight</th>
           <th scope="col">Height</th>
           <th scope="col">Blood Type</th>
-          <th class="text-center" scope="col">Disorders</th>
-          <!-- <th class="text-center" scope="col">Vaccines</th>
-          <th class="text-center" scope="col">Bills</th> -->
         </tr>
       </thead>
       <tbody>
@@ -37,20 +34,17 @@
           <td>{{patients.weight}}</td>
           <td>{{patients.height}}</td>
           <td>{{patients.bloodType}}</td>
-          <td class="text-center">{{patients.NumDisorders}}</td>
-          <!-- <td class="text-center">{{patients.NumDisorders}}</td>
-          <td class="text-center">{{patients.NumDisorders}}</td> -->
           <button type=" button "  class="btn view-btn" @click="update(patients.userID)">
             View Patient Data
           </button>
-          <td>
-            <!-- <button @click="remove(patients.userID)" type="submit" class="btn remove-btn">
+          <!-- <td>
+            <button @click="remove(patients.userID)" type="submit" class="btn remove-btn">
               Remove Patient
-            </button> -->
+            </button>
             <button type="submit" class="btn remove-btn">
               Remove Patient
             </button>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>

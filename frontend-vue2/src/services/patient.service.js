@@ -4,7 +4,7 @@ class PatientService {
   create(data) {
     return api.post("http://localhost:8080/api/patients", data);
   }
-  /*
+  
   update(id, data) {
     return api.put(`/patients/${id}`, data);
   }
@@ -12,7 +12,7 @@ class PatientService {
   delete(id) {
     return api.delete("http://localhost:8080/api/patients/" + id);
   }
-  */
+  
 
   getById(id) {
     return api.get("http://localhost:8080/api/patients/" + id);
