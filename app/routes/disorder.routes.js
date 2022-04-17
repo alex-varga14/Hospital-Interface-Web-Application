@@ -9,7 +9,7 @@ module.exports = app => {
     router.get("/disorders/:disorderName", disorders.findDisorderByPK);
     
     //Retrieve Disorders by PatientID
-    router.get("/disorders/:patientID", disorders.findDisorderbyPatientID);
+    router.get("/disorders/patientID/:patientID", disorders.findDisorderbyPatientID);
 
     // Update a Disorders with patientID
     router.put("/disorders/:patientID", disorders.update);

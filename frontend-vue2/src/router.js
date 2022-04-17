@@ -12,6 +12,7 @@ import Appointments from './views/Appointments.vue';
 import NewOperation from './views/NewOperation.vue';
 import Bills from './views/Bills.vue';
 import NewPatient from './views/NewPatient.vue';
+import ChangeEmergencyContact from './views/ChangeEmergencyContact.vue';
 
 Vue.use(Router);
 export const router = new Router({
@@ -47,6 +48,11 @@ export const router = new Router({
       path: '/patient-information/:id',
       name: 'patient-information',
       component: PatientInfo
+    },
+    {
+      path: '/change-emergency-contact/:id',
+      name: 'change-emergency-contact',
+      component: ChangeEmergencyContact
     },
     {
       path: '/facility-data',

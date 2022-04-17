@@ -26,7 +26,7 @@ class AppointmentService {
   }
 
   getByPatientID(id) {
-    return api.get("http://localhost:8080/api/appointments/patientID/:" + id);
+    return api.get("http://localhost:8080/api/appointments/patientID/" + id);
   }
 
   getRequestedAppointments() {

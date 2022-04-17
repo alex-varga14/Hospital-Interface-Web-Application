@@ -104,7 +104,7 @@ exports.delete = (req, res) => {
 // Get Disorder by PatientID
 exports.findDisorderbyPatientID = (req, res) => {
     const patientID = req.params.patientID;
-
+    
     Disorder.findAll({
         where: {
             patientID: patientID

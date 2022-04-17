@@ -6,7 +6,7 @@ class EmergencyContactService {
   }
   
   update(id, data) {
-    return api.put(`/emergency-contacts/${id}`, data);
+    return api.put("http://localhost:8080/api/emergency-contacts/" + id, data);
   }
 
   delete(id) {
