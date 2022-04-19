@@ -7,6 +7,7 @@ const User = db.user;
 // 2) check if roles in the request exist or not
 checkDuplicateUsernameOrEmail = (req, res, next) => {
   // Username
+  
   User.findOne({
     where: {
       username: req.body.username
