@@ -6,7 +6,6 @@ import {
     LOGOUT,
     SET_MESSAGE,
   } from "./types";
-
   import AuthService from "../services/auth.service";
 
   // Creator for actions related to authentications.
