@@ -1,5 +1,9 @@
 import { SET_MESSAGE, CLEAR_MESSAGE } from "../actions/types";
+
 const initialState = {};
+
+// This reducer updates "message" state when message action is dispatched from anywhere in the application
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
