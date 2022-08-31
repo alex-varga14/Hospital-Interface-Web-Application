@@ -1,12 +1,12 @@
 import React from "react";
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 //Page gets current User from Local Storage by getting user in the application state and show user information with token
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   if (!currentUser) {
-    return <Redirect to="/login" />;
+    return <Navigate to="/login" />;
   }
   return (
     <div className="container">
